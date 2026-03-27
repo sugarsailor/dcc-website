@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCC – Digital Content Creation | Philipp Oberforcher</title>
+  <meta name="description" content="Creative Partner für professionelle Videoproduktion, Motion Design & KI-Content. Let's tell your story. Together!" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:   #faf9f5;
+      --black:   #141413;
+      --red:     #e84646;
+      --white:   #ffffff;
+      --gray:    #333333;
+      --light:   #e8e6e6;
+      --dark:    #1f1e1d;
+      --font:    'Poppins', sans-serif;
+      --ease:    cubic-bezier(0.16, 1, 0.3, 1);     /* expo-out — premium snap */
+      --spring:  cubic-bezier(0.34, 1.56, 0.64, 1); /* slight overshoot — physical */
+    }
+    /* Grain texture — removes "plastic" flatness, fixed so it doesn't cause GPU repaints on scroll */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9998;
+      pointer-events: none; user-select: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font);
+      background: var(--cream);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--red); color: var(--white); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--black); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: transparent;
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      border-bottom: 1px solid transparent;
+      transition: background 0.5s var(--ease), border-color 0.5s var(--ease),
+                  padding 0.35s var(--ease), backdrop-filter 0.5s, box-shadow 0.5s var(--ease);
+    }
+    nav.scrolled {
+      background: rgba(250,249,245,0.93);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-color: var(--light);
+      padding: 0.8rem 4rem;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .nav-logo {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; line-height: 1.3;
+      display: flex; align-items: center; gap: 0.8rem;
+      color: var(--white);
+      transition: color 0.5s var(--ease);
+    }
+    nav.scrolled .nav-logo { color: var(--black); }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.55rem; font-weight: 900; letter-spacing: 0.1em;
+      text-align: center; line-height: 1.1; padding: 4px;
+      transition: border-color 0.5s var(--ease);
+    }
+    nav.scrolled .nav-logo-icon { border-color: var(--black); }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-links a {
+      position: relative;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.2s, opacity 0.5s var(--ease);
+      padding-bottom: 2px;
+    }
+    nav.scrolled .nav-links a { color: var(--black); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: var(--red);
+      transition: width 0.3s var(--ease);
+    }
+    .nav-links a:hover { color: var(--red) !important; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 2px;
+      color: var(--white);
+      transition: background 0.25s, color 0.25s, border-color 0.5s var(--ease), transform 0.2s;
+    }
+    nav.scrolled .nav-cta { border-color: var(--black); color: var(--black); }
+    .nav-cta:hover  { background: var(--white); color: var(--black) !important; border-color: var(--white) !important; }
+    nav.scrolled .nav-cta:hover { background: var(--black); color: var(--white) !important; border-color: var(--black) !important; }
+    .nav-cta:active { transform: scale(0.97); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
+    nav.scrolled .hamburger span { background: var(--black); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100dvh; /* dvh prevents iOS Safari layout jump */
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 0 4rem 5rem;
+      position: relative; overflow: hidden;
+      background-color: var(--black);
+      background-image: url('filming.png');
+      background-size: cover;
+      background-position: center 30%;
+    }
+    /* Gradient overlay — left side darker for text, reveals image right */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        linear-gradient(to bottom, rgba(20,20,19,0.55) 0%, rgba(20,20,19,0.2) 40%, rgba(20,20,19,0.75) 100%),
+        linear-gradient(to right, rgba(20,20,19,0.75) 0%, rgba(20,20,19,0.25) 70%, rgba(20,20,19,0.15) 100%);
+    }
+    #hero > * { position: relative; z-index: 1; }
+    .hero-tag {
+      position: absolute; top: 50%; left: 4rem;
+      transform: translateY(-50%);
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      writing-mode: vertical-rl;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-tag::before {
+      content: ''; display: block;
+      width: 1px; height: 60px; background: rgba(255,255,255,0.25);
+    }
+    .hero-social {
+      position: fixed; right: 1.75rem; top: 50%; transform: translateY(-50%);
+      z-index: 90;
+      display: flex; flex-direction: column; gap: 1rem; align-items: center;
+      background: rgba(250,249,245,0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(20,20,19,0.08);
+      border-radius: 100px;
+      padding: 1.25rem 0.65rem;
+      box-shadow: 0 4px 20px rgba(20,20,19,0.08);
+    }
+    .hero-social::before { display: none; }
+    .hero-social a {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(20,20,19,0.45);
+      writing-mode: vertical-rl;
+      transition: color 0.2s;
+    }
+    .hero-social a:hover { color: var(--red); }
+    .hero-content { max-width: 900px; }
+    .hero-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-label::before {
+      content: ''; display: inline-block;
+      width: 32px; height: 1px; background: var(--red);
+    }
+    .hero-headline {
+      font-size: clamp(3rem, 8vw, 7.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+      color: var(--white);
+    }
+    .hero-headline .word-cycle {
+      display: inline-block;
+      color: var(--red);
+      min-width: 220px;
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.65);
+      max-width: 480px; line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta-group { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--black); color: var(--white);
+      font-family: var(--font); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 1rem 2rem; border-radius: 2px;
+      border: 2px solid var(--black);
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+    }
+    .btn-primary:hover  { background: var(--red); border-color: var(--red); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(1px) scale(0.98); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      color: var(--black);
+      font-family: var(--font); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 1rem 2rem; border-radius: 2px;
+      border: 2px solid var(--light);
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .btn-ghost:hover  { border-color: var(--black); transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(1px) scale(0.98); }
+    /* Hero-specific button overrides on dark background */
+    #hero .btn-primary {
+      background: var(--white); color: var(--black); border-color: var(--white);
+    }
+    #hero .btn-primary:hover  { background: var(--red); color: var(--white); border-color: var(--red); }
+    #hero .btn-primary:active { transform: translateY(1px) scale(0.98); }
+    #hero .btn-ghost {
+      color: var(--white); border-color: rgba(255,255,255,0.35);
+    }
+    #hero .btn-ghost:hover  { border-color: var(--white); background: rgba(255,255,255,0.08); }
+    #hero .btn-ghost:active { transform: translateY(1px) scale(0.98); }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); opacity: 1;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .hero-scroll::after {
+      content: ''; display: block;
+      width: 1px; height: 40px; background: rgba(255,255,255,0.25);
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+    .hero-bg-text {
+      position: absolute; bottom: -0.1em; right: -0.05em;
+      font-size: clamp(8rem, 18vw, 22rem);
+      font-weight: 900; letter-spacing: -0.05em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.05);
+      pointer-events: none; user-select: none;
+      line-height: 0.85;
+    }
+
+    /* ── SECTION STYLES ── */
+    section { position: relative; }
+    .section-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 4rem; gap: 2rem;
+    }
+    .section-number {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-number::before {
+      content: ''; display: inline-block;
+      width: 24px; height: 1px; background: var(--red);
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .section-desc {
+      font-size: 1rem; font-weight: 300; color: var(--gray);
+      line-height: 1.75; max-width: 420px; margin-top: auto;
+      padding-top: 1rem;
+    }
+
+    /* ── LEISTUNGEN ── */
+    #leistungen {
+      padding: 7rem 4rem;
+      background: var(--cream);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--light);
+      border: 1px solid var(--light);
+    }
+    .service-card {
+      background: var(--cream);
+      padding: 3rem;
+      display: flex; flex-direction: column; gap: 1.2rem;
+      transition: background 0.45s var(--ease), box-shadow 0.45s var(--ease);
+      position: relative; overflow: hidden;
+      will-change: background;
+    }
+    .service-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 3px; background: var(--red);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+    .service-card:hover { background: var(--white); box-shadow: 0 20px 50px -15px rgba(20,20,19,0.08); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 48px; height: 48px;
+      border: 1.5px solid var(--black);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      transition: background 0.35s var(--spring), border-color 0.35s, transform 0.35s var(--spring);
+    }
+    .service-card:hover .service-icon { background: var(--red); border-color: var(--red); transform: scale(1.08); }
+    .service-num {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red);
+    }
+    .service-title {
+      font-size: 1.4rem; font-weight: 900; line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .service-text {
+      font-size: 0.88rem; font-weight: 300; color: var(--gray);
+      line-height: 1.75;
+    }
+    .service-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto;
+    }
+    .service-tag {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem; border: 1px solid var(--light);
+      border-radius: 1px; color: var(--gray);
+    }
+
+    /* ── PROJEKTE ── */
+    #projekte {
+      padding: 7rem 0 7rem;
+      background: var(--black);
+      color: var(--white);
+    }
+    #projekte .section-number { color: var(--red); }
+    #projekte .section-title { color: var(--white); }
+    #projekte .section-desc { color: rgba(255,255,255,0.5); }
+    #projekte .section-header { padding: 0 4rem 3.5rem; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 3px;
+    }
+    /* Row 1: three equal */
+    .project-card:nth-child(1),
+    .project-card:nth-child(2),
+    .project-card:nth-child(3) { grid-column: span 2; }
+    /* Row 2: two wider halves */
+    .project-card:nth-child(4),
+    .project-card:nth-child(5) { grid-column: span 3; }
+    /* Row 3: three equal */
+    .project-card:nth-child(6),
+    .project-card:nth-child(7),
+    .project-card:nth-child(8) { grid-column: span 2; }
+    /* Row 4: asymmetric finish */
+    .project-card:nth-child(9)  { grid-column: span 4; }
+    .project-card:nth-child(10) { grid-column: span 2; }
+    .project-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 16/9;
+      background: var(--dark);
+      cursor: pointer;
+    }
+    .project-thumb {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease);
+      will-change: transform;
+      display: block;
+    }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.35);
+      transition: background 0.45s var(--ease);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .project-play {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      /* inner refraction border per taste-skill */
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.35s var(--spring), border-color 0.35s, transform 0.4s var(--spring);
+      backdrop-filter: blur(6px);
+    }
+    .project-play svg { margin-left: 4px; }
+    .project-card:hover .project-thumb { transform: scale(1.05); }
+    .project-card:hover .project-overlay { background: rgba(0,0,0,0.12); }
+    .project-card:hover .project-play { background: var(--red); border-color: var(--red); transform: scale(1.12); box-shadow: inset 0 1px 0 rgba(255,255,255,0.2); }
+    .project-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.4rem 1.6rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0) 100%);
+      transform: translateY(6px); opacity: 0;
+      transition: opacity 0.38s var(--ease), transform 0.38s var(--ease);
+    }
+    .project-card:hover .project-info { transform: translateY(0); opacity: 1; }
+    .project-client {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.25rem;
+    }
+    .project-name {
+      font-size: 0.95rem; font-weight: 700; color: var(--white); line-height: 1.2;
+    }
+    .project-type {
+      font-size: 0.65rem; font-weight: 300; color: rgba(255,255,255,0.55);
+      margin-top: 0.2rem;
+    }
+
+    /* ── 9x16 REEL SECTION ── */
+    .reel-section {
+      margin-top: 3px;
+      padding: 3.5rem 4rem 0;
+      background: var(--black);
+    }
+    .reel-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .reel-title {
+      font-size: clamp(1rem, 1.6vw, 1.4rem); font-weight: 700;
+      color: rgba(255,255,255,0.85); margin-bottom: 2rem;
+    }
+    .reel-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 3px;
+      margin: 0 -4rem;   /* bleed to edges */
+    }
+    .reel-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 9/16;
+      background: #0a0a0a;
+      cursor: pointer;
+    }
+    .reel-thumb {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease);
+      will-change: transform;
+      display: block;
+    }
+    .reel-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.45s var(--ease);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .reel-play {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.35s var(--spring), border-color 0.35s, transform 0.4s var(--spring);
+      backdrop-filter: blur(6px);
+    }
+    .reel-play svg { margin-left: 3px; }
+    .reel-card:hover .reel-thumb { transform: scale(1.07); }
+    .reel-card:hover .reel-overlay { background: rgba(0,0,0,0.08); }
+    .reel-card:hover .reel-play { background: var(--red); border-color: var(--red); transform: scale(1.12); }
+    .reel-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 0.9rem 0.85rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 100%);
+      transform: translateY(5px); opacity: 0;
+      transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+    }
+    .reel-card:hover .reel-info { transform: translateY(0); opacity: 1; }
+    .reel-client {
+      font-size: 0.5rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.15rem;
+    }
+    .reel-name {
+      font-size: 0.72rem; font-weight: 600; color: var(--white); line-height: 1.2;
+    }
+
+    /* ── AI MARQUEE BANNER ── */
+    .ai-banner {
+      background: var(--black);
+      padding: 3rem 0 0;
+      overflow: hidden;
+    }
+    .ai-banner-header {
+      padding: 0 4rem 1.75rem;
+    }
+    .ai-banner-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem;
+    }
+    .ai-banner-title {
+      font-size: clamp(1rem, 1.6vw, 1.4rem); font-weight: 700;
+      color: rgba(255,255,255,0.85);
+    }
+    .ai-track-wrap {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    }
+    .ai-track {
+      display: flex;
+      gap: 4px;
+      width: max-content;
+      animation: ai-scroll 80s linear infinite;
+    }
+    @keyframes ai-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ai-item {
+      height: 280px;
+      flex-shrink: 0;
+      border-radius: 2px;
+      overflow: hidden;
+      pointer-events: none;
+      user-select: none;
+    }
+    .ai-item img,
+    .ai-item video {
+      height: 100%;
+      width: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.95);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s var(--ease);
+    }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    .lightbox-inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lightbox-inner video {
+      max-width: 90vw;
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+    }
+    .lightbox-close {
+      align-self: flex-end;
+      margin-bottom: 0.75rem;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer; background: none; border: none;
+      font-family: var(--font); transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .lightbox-close:hover { color: var(--white); }
+    .lightbox-title {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; margin-top: 1rem; text-align: center;
+    }
+
+    /* ── ÜBER MICH ── */
+    #ueber-mich {
+      padding: 7rem 4rem;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-photo-wrap {
+      aspect-ratio: 3/4;
+      background: var(--light);
+      overflow: hidden; border-radius: 3px;
+      position: relative;
+    }
+    .about-photo-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, #e8e6e6 0%, #d0cece 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; color: rgba(20,20,19,0.1);
+    }
+    .about-badge {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--red); color: var(--white);
+      padding: 1.5rem;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; text-align: center; line-height: 1.5;
+      width: 120px; border-radius: 2px;
+      animation: badgeFloat 5s ease-in-out infinite;
+    }
+    @keyframes badgeFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-7px); }
+    }
+    .about-badge strong { display: block; font-size: 2rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1; margin-bottom: 0.3rem; }
+    .about-content {}
+    .about-intro {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .about-intro::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--red); }
+    .about-title {
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 900; line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .about-text {
+      font-size: 0.95rem; font-weight: 300; color: var(--gray);
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+    .about-quote {
+      margin: 2rem 0;
+      padding: 1.5rem 1.5rem 1.5rem 2rem;
+      border-left: 3px solid var(--red);
+      background: var(--white);
+      border-radius: 0 3px 3px 0;
+    }
+    .about-quote p {
+      font-size: 0.88rem; font-style: italic; color: var(--gray);
+      line-height: 1.7; margin-bottom: 0.5rem;
+    }
+    .about-quote cite {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--black); font-style: normal;
+    }
+    .about-skills {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem;
+    }
+    .skill-chip {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--black);
+      transition: background 0.2s, color 0.2s;
+    }
+    .skill-chip:hover  { background: var(--black); color: var(--white); }
+    .skill-chip:active { transform: scale(0.96); }
+
+    /* ── KONTAKT ── */
+    #kontakt {
+      padding: 7rem 4rem;
+      background: var(--dark);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    #kontakt .section-number { color: var(--red); }
+    #kontakt .section-title { color: var(--white); }
+    .contact-info { }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+    .contact-detail-text { }
+    .contact-detail-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.2rem;
+    }
+    .contact-detail-value {
+      font-size: 0.95rem; color: rgba(255,255,255,0.8); font-weight: 300;
+    }
+    .contact-social { display: flex; gap: 1rem; margin-top: 2.5rem; }
+    .contact-social-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      padding: 0.7rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .contact-social-link:hover { color: var(--white); border-color: var(--white); }
+    .contact-form { }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-label {
+      display: block;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 0.5rem;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 2px;
+      padding: 0.9rem 1rem;
+      font-family: var(--font); font-size: 0.9rem; font-weight: 300;
+      color: var(--white);
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      outline: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--red);
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 0 0 3px rgba(232,70,70,0.1);
+    }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      width: 100%;
+      background: var(--red); color: var(--white);
+      font-family: var(--font); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 1rem 2rem; border-radius: 2px;
+      border: none; cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover  { background: #c93d3d; transform: translateY(-2px); }
+    .form-submit:active { transform: scale(0.98) translateY(0); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 4rem;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-copy {
+      font-size: 0.65rem; font-weight: 300; color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+    .footer-links {
+      display: flex; gap: 1.5rem;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+    }
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-reveal-delay="1"] { transition-delay: 0.08s; }
+    [data-reveal-delay="2"] { transition-delay: 0.16s; }
+    [data-reveal-delay="3"] { transition-delay: 0.24s; }
+    [data-reveal-delay="4"] { transition-delay: 0.32s; }
+    [data-reveal-delay="5"] { transition-delay: 0.40s; }
+    [data-reveal-delay="6"] { transition-delay: 0.48s; }
+    [data-reveal-delay="3"] { transition-delay: 0.3s; }
+    [data-reveal-delay="4"] { transition-delay: 0.4s; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav.scrolled { padding: 0.8rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      #hero { padding: 0 1.5rem 4rem; }
+      .hero-tag, .hero-social { display: none; }
+      .hero-headline { font-size: clamp(2.5rem, 12vw, 4rem); }
+      #leistungen, #projekte { padding: 5rem 1.5rem; }
+      #ueber-mich, #kontakt { padding: 5rem 1.5rem; grid-template-columns: 1fr; gap: 3rem; }
+      .section-header { flex-direction: column; }
+      .services-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+      .about-badge { display: none; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .ai-steps-grid { grid-template-columns: 1fr !important; }
+      .ai-image-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 2rem; }
+      #hero { padding: 0 2rem 4rem; }
+      #leistungen, #projekte { padding: 5rem 2rem; }
+      #ueber-mich, #kontakt { padding: 5rem 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-card.featured { grid-column: span 2; }
+      footer { padding: 1.5rem 2rem; }
+      .ai-steps-grid { grid-template-columns: 1fr 1fr !important; }
+      .ai-image-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <img src="logo-white.png" alt="Digital Content Creation Logo" style="width:40px;height:40px;border-radius:50%;object-fit:cover;" />
+      <span>Digital<br>Content Creation</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#ai-content">KI & AI</a></li>
+      <li><a href="#projekte">Projekte</a></li>
+      <li><a href="#ueber-mich">Über mich</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="#kontakt" class="nav-cta">Projekt starten</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ── SOCIAL SIDEBAR (fixed, persists while scrolling) ── -->
+  <div class="hero-social">
+    <a href="https://www.linkedin.com/in/digitalcontentcreation/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.instagram.com/digital_content_creation/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-bg-text">DCC</div>
+    <div class="hero-content">
+      <p class="hero-label">Philipp Oberforcher · Bregenz, AT</p>
+      <h1 class="hero-headline">
+        Let's <span class="word-cycle" id="wordCycle">tell</span><br>your story.<br>Together!
+      </h1>
+      <p class="hero-sub">
+        Experte für professionelle Videoproduktion, Motion Design & KI-gestützten Content – kreativ, schnell, authentisch.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#projekte" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Projekte ansehen
+        </a>
+        <a href="#kontakt" class="btn-ghost">Zusammenarbeiten</a>
+      </div>
+    </div>
+    <div class="hero-scroll">scroll</div>
+  </section>
+
+  <!-- ── LEISTUNGEN ── -->
+  <section id="leistungen">
+    <div class="section-header" data-reveal>
+      <div>
+        <p class="section-number">01 — Leistungen</p>
+        <h2 class="section-title">Kreativ.<br>Strategisch.<br>KI-verstärkt.</h2>
+      </div>
+      <div class="section-desc">
+        <p>Ich unterstütze Agenturen und Unternehmen dabei, kreative Inhalte zu entwickeln – mit den neuesten KI-Tools, ohne dabei den menschlichen Kern zu verlieren.</p>
+        <p style="margin-top:1rem;">Als Creative Partner begleite ich Unternehmen entlang der gesamten Customer Journey: von der ersten Aufmerksamkeit über den Aufbau von Vertrauen bis hin zur finalen Kaufentscheidung.</p>
+        <p style="margin-top:1rem;">Dafür entstehen passgenaue Inhalte wie Videos, Fotos, Animationen und Grafiken, die Marken klar positionieren und Wirkung zeigen.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-reveal data-reveal-delay="1">
+        <span class="service-num">01</span>
+        <div class="service-icon">🎬</div>
+        <h3 class="service-title">Video&shy;produktion</h3>
+        <p class="service-text">Flexibel mit leichtem Equipment – vor Ort auf Events, im Studio oder bei Interviews. Effizient produziert, hochwertig umgesetzt.</p>
+        <div class="service-tags">
+          <span class="service-tag">Kamera</span>
+          <span class="service-tag">Editing</span>
+          <span class="service-tag">Dokumentar</span>
+        </div>
+      </div>
+      <div class="service-card" data-reveal data-reveal-delay="2">
+        <span class="service-num">02</span>
+        <div class="service-icon">⚡</div>
+        <h3 class="service-title">Motion Design & 3D</h3>
+        <p class="service-text">Animierte Inhalte und 3D-Visualisierungen, die Aufmerksamkeit erzeugen und Marken klar positionieren.</p>
+        <div class="service-tags">
+          <span class="service-tag">Motion Graphics</span>
+          <span class="service-tag">3D</span>
+          <span class="service-tag">SFX</span>
+        </div>
+      </div>
+      <div class="service-card" data-reveal data-reveal-delay="3">
+        <span class="service-num">03</span>
+        <div class="service-icon">🤖</div>
+        <h3 class="service-title">KI-Content & Automation</h3>
+        <p class="service-text">AI Video Generation, Voice-Over bis hin zu KI-Charakteren – skalierbar, markentreu und strategisch eingesetzt.</p>
+        <div class="service-tags">
+          <span class="service-tag">AI Video</span>
+          <span class="service-tag">Automation</span>
+          <span class="service-tag">Skalierung</span>
+        </div>
+      </div>
+      <div class="service-card" data-reveal data-reveal-delay="4">
+        <span class="service-num">04</span>
+        <div class="service-icon">🎨</div>
+        <h3 class="service-title">Post&shy;produktion</h3>
+        <p class="service-text">Von der ersten Rohfassung bis zum finalen Output – Grading, Sound-Design und Visual Effects auf höchstem Niveau.</p>
+        <div class="service-tags">
+          <span class="service-tag">Color Grading</span>
+          <span class="service-tag">VFX</span>
+          <span class="service-tag">Sound</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AI SECTION ── -->
+  <section id="ai-content" style="background: var(--black); color: var(--white); padding: 7rem 2rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+
+      <!-- Header -->
+      <div class="section-header" data-reveal style="margin-bottom: 4rem;">
+        <div>
+          <p class="section-number" style="color: var(--red);">03 — KI & Automation</p>
+          <h2 style="color: var(--white);">3 Schritte zum<br><em style="color: var(--red); font-style: normal;">AI-Content.</em></h2>
+        </div>
+        <div class="section-desc" style="color: rgba(250,249,245,0.65);">
+          <p>So einfach funktioniert's. Kein Tech-Chaos, kein Agentur-Dschungel — sondern ein klarer Prozess, der zu deinem Business passt.</p>
+        </div>
+      </div>
+
+      <!-- 3-Step Process -->
+      <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-bottom: 5rem;" class="ai-steps-grid">
+
+        <div data-reveal data-reveal-delay="0" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); border-radius: 16px; padding: 2.5rem; transition: background 0.3s;">
+          <div style="width: 48px; height: 48px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; margin-bottom: 1.5rem; color: #fff;">1</div>
+          <h3 style="color: var(--white); font-size: 1.25rem; margin-bottom: 0.75rem;">Analyse &amp; Potenzialcheck</h3>
+          <p style="color: rgba(250,249,245,0.6); line-height: 1.7; font-size: 0.95rem;">Wir schauen uns gemeinsam an, wo KI in deinem Business wirklich Sinn macht — und wo nicht. Kein Buzzword-Bingo, sondern ehrliche Einschätzung mit konkretem Mehrwert.</p>
+        </div>
+
+        <div data-reveal data-reveal-delay="1" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); border-radius: 16px; padding: 2.5rem; transition: background 0.3s;">
+          <div style="width: 48px; height: 48px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; margin-bottom: 1.5rem; color: #fff;">2</div>
+          <h3 style="color: var(--white); font-size: 1.25rem; margin-bottom: 0.75rem;">Strategie &amp; Umsetzung</h3>
+          <p style="color: rgba(250,249,245,0.6); line-height: 1.7; font-size: 0.95rem;">Vom Konzept bis zum fertigen AI-Content: Ich entwickle den passenden Workflow für dein Team — inklusive AI-Avatare, automatisierter Videoproduktion und skalierbarer Content-Pipelines.</p>
+        </div>
+
+        <div data-reveal data-reveal-delay="2" style="background: rgba(250,249,245,0.05); border: 1px solid rgba(250,249,245,0.1); border-radius: 16px; padding: 2.5rem; transition: background 0.3s;">
+          <div style="width: 48px; height: 48px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; margin-bottom: 1.5rem; color: #fff;">3</div>
+          <h3 style="color: var(--white); font-size: 1.25rem; margin-bottom: 0.75rem;">Integration &amp; Skalierung</h3>
+          <p style="color: rgba(250,249,245,0.6); line-height: 1.7; font-size: 0.95rem;">Die Tools laufen, der Content fließt — jetzt skalieren wir. Ich begleite dich dabei, die AI-Prozesse fest ins Unternehmen zu integrieren und kontinuierlich weiterzuentwickeln.</p>
+        </div>
+
+      </div>
+
+      <!-- AI Avatar Videos — same size, 16:9 uniform -->
+      <div data-reveal>
+        <p style="color: rgba(250,249,245,0.5); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; margin-bottom: 1.5rem;">AI Avatar Beispiele</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+
+          <div class="ai-video-card" style="border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.04); cursor: pointer; position: relative; aspect-ratio: 16/9;" onclick="openLightbox('https://media.digitalmaker.at/ai-avatar-1.mp4')">
+            <video muted loop playsinline style="width: 100%; height: 100%; display: block; object-fit: cover; position: absolute; inset: 0;" onmouseenter="this.play()" onmouseleave="this.pause(); this.currentTime=0;">
+              <source src="https://media.digitalmaker.at/ai-avatar-1.mp4" type="video/mp4">
+            </video>
+            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+              <div style="width: 56px; height: 56px; background: rgba(232,70,70,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-video-card" style="border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.04); cursor: pointer; position: relative; aspect-ratio: 16/9;" onclick="openLightbox('https://media.digitalmaker.at/ai-avatar-2.mp4')">
+            <video muted loop playsinline style="width: 100%; height: 100%; display: block; object-fit: cover; position: absolute; inset: 0;" onmouseenter="this.play()" onmouseleave="this.pause(); this.currentTime=0;">
+              <source src="https://media.digitalmaker.at/ai-avatar-2.mp4" type="video/mp4">
+            </video>
+            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+              <div style="width: 56px; height: 56px; background: rgba(232,70,70,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PROJEKTE ── -->
+  <section id="projekte">
+    <div class="section-header" data-reveal>
+      <div>
+        <p class="section-number">02 — Projekte</p>
+        <h2 class="section-title">Echter Erfolg:<br>Verkäufe<br>statt Views.</h2>
+      </div>
+      <p class="section-desc">
+        Ausgewählte Arbeiten für Marken, die wissen: Qualität, Kreativität und Strategie ergeben gemeinsam Wirkung.
+      </p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Card 1 -->
+      <div class="project-card" data-reveal onclick="openLightbox('https://media.digitalmaker.at/Adelboden_Sunrise_Highlights.mp4','Adelboden Sunrise Highlights')">
+        <img class="project-thumb" src="projects/Adelboden_Sunrise_Highlights_Thumbnail.jpg" alt="Adelboden Sunrise Highlights" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">Adelboden</p>
+          <p class="project-name">Sunrise Highlights</p>
+          <p class="project-type">Outdoor · Nature Film</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="project-card" data-reveal data-reveal-delay="1" onclick="openLightbox('https://media.digitalmaker.at/Animalica_2022_V03_Katze.mp4','Animalica 2022')">
+        <img class="project-thumb" src="projects/Animalica_2022_V03_Katze_Thumbnail.jpg" alt="Animalica 2022" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">Animalica</p>
+          <p class="project-name">Animalica 2022</p>
+          <p class="project-type">Animal · Dokumentar</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="project-card" data-reveal data-reveal-delay="2" onclick="openLightbox('https://media.digitalmaker.at/Dyntex_Biosynthetics_2019_V3_Biodegradable_V3_1080.mp4','Dyntex Biosynthetics')">
+        <img class="project-thumb" src="projects/Dyntex_Biosynthetics_2019_V3_Biodegradable_V3_1080_Thumbnail.jpg" alt="Dyntex Biosynthetics" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">Dyntex</p>
+          <p class="project-name">Biosynthetics</p>
+          <p class="project-type">Corporate · Produktfilm</p>
+        </div>
+      </div>
+
+      <!-- Card 4 — half-width -->
+      <div class="project-card" data-reveal onclick="openLightbox('https://media.digitalmaker.at/Gantner_Emotions_16x9.mp4','Gantner Emotions')">
+        <img class="project-thumb" src="projects/Gantner_Emotions_16x9_Thumbnail.jpg" alt="Gantner Emotions" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">Gantner</p>
+          <p class="project-name">Emotions</p>
+          <p class="project-type">Emotionsfilm · Brand</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="project-card" data-reveal data-reveal-delay="1" onclick="openLightbox('https://media.digitalmaker.at/Gantner_What is GI Bench.mp4','Gantner – What is GI Bench?')">
+        <img class="project-thumb" src="projects/Gantner_What is GI Bench_Thumbnail.jpg" alt="Gantner GI Bench" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">Gantner</p>
+          <p class="project-name">What is GI Bench?</p>
+          <p class="project-type">Produktfilm · Erklärfilm</p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="project-card" data-reveal onclick="openLightbox('https://media.digitalmaker.at/Kaestle_Produktshots_2021.mp4','Kaestle Produktshots 2021')">
+        <img class="project-thumb" src="projects/Kaestle_Produktshots_2021_Thumbnail.jpg" alt="Kaestle Produktshots" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">Kaestle</p>
+          <p class="project-name">Produktshots 2021</p>
+          <p class="project-type">Produktshots · Kamera</p>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="project-card" data-reveal data-reveal-delay="1" onclick="openLightbox('https://media.digitalmaker.at/Klimacent_V04_final_720.mp4','Klimacent')">
+        <img class="project-thumb" src="projects/Klimacent_V04_final_720_Thumbnail.jpg" alt="Klimacent" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">Klimacent</p>
+          <p class="project-name">Kampagnenfilm</p>
+          <p class="project-type">Brand · Kampagne</p>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="project-card" data-reveal data-reveal-delay="2" onclick="openLightbox('https://media.digitalmaker.at/WPD_Lorraine_Huber_V6.mp4','WPD – Lorraine Huber')">
+        <img class="project-thumb" src="projects/WPD_Lorraine_Huber_V6_Thumbnail.jpg" alt="WPD Lorraine Huber" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">WPD</p>
+          <p class="project-name">Lorraine Huber</p>
+          <p class="project-type">Athleten · Sport Film</p>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="project-card" data-reveal onclick="openLightbox('https://media.digitalmaker.at/WWP_Kitzbühel_Trailer_Klammer_Cuche_2022_V5_1.mp4','WWP Kitzbühel Trailer')">
+        <img class="project-thumb" src="projects/WWP_Kitzbühel_Trailer_Klammer_Cuche_2022_V5_1_Thumbnail.jpg" alt="WWP Kitzbühel Trailer" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">WWP</p>
+          <p class="project-name">Kitzbühel Trailer</p>
+          <p class="project-type">Sport · Trailer</p>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="project-card" data-reveal data-reveal-delay="1" onclick="openLightbox('https://media.digitalmaker.at/WWP_Pitboss_Anthony_Modeste_V3.mp4','WWP Pitboss – Anthony Modeste')">
+        <img class="project-thumb" src="projects/WWP_Pitboss_Anthony Modeste_V3_Thumbnail.jpg" alt="WWP Pitboss Anthony Modeste" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3l11 6-11 6V3z"/></svg></div>
+        </div>
+        <div class="project-info">
+          <p class="project-client">WWP Pitboss</p>
+          <p class="project-name">Anthony Modeste</p>
+          <p class="project-type">Athleten · Brand Film</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- ── 9x16 REEL SUBSECTION ── -->
+    <div class="reel-section" data-reveal>
+      <p class="reel-label">Vertical Content</p>
+      <h3 class="reel-title">Social Media & Reels</h3>
+      <div class="reel-grid">
+
+        <!-- Reel 1 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/Breakpoint_Waterdropworkshop.mp4','Breakpoint – Waterdrop Workshop')">
+          <img class="reel-thumb" src="projects/9x16/Breakpoint_Waterdropworkshop_Thumbnail.jpg" alt="Breakpoint Waterdrop" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">Breakpoint</p><p class="reel-name">Waterdrop Workshop</p></div>
+        </div>
+
+        <!-- Reel 2 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/CO_Agency_Phishing_Quiz.mp4','CO Agency – Phishing Quiz')">
+          <img class="reel-thumb" src="projects/9x16/CO_Agency_Phishing_Quiz_Thumbnail.jpg" alt="CO Agency Phishing Quiz" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">CO Agency</p><p class="reel-name">Phishing Quiz</p></div>
+        </div>
+
+        <!-- Reel 3 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/CO_Kriechmayr_Kitzbühel_9_16.mp4','CO – Kriechmayr Kitzbühel')">
+          <img class="reel-thumb" src="projects/9x16/CO_Kriechmayr_Kitzbühel_9_16_Thumbnail.jpg" alt="Kriechmayr Kitzbühel" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">CO</p><p class="reel-name">Kriechmayr Kitzbühel</p></div>
+        </div>
+
+        <!-- Reel 4 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/Kampangne_1.mp4','Kampagne')">
+          <img class="reel-thumb" src="projects/9x16/Kampangne_1_Thumbnail.jpg" alt="Kampagne" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">Kampagne</p><p class="reel-name">Social Ad</p></div>
+        </div>
+
+        <!-- Reel 5 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/Mercedes.mp4','Mercedes')">
+          <img class="reel-thumb" src="projects/9x16/Mercedes_Thumbnail.jpg" alt="Mercedes" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">Mercedes</p><p class="reel-name">Brand Reel</p></div>
+        </div>
+
+        <!-- Reel 6 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/Nuffins_9_16_V2.mp4','Nuffinz')">
+          <img class="reel-thumb" src="projects/9x16/Nuffinz_9_16_V2_Thumbnail.jpg" alt="Nuffinz" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">Nuffinz</p><p class="reel-name">Social Reel</p></div>
+        </div>
+
+        <!-- Reel 7 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/Sunrise_MO_4WC_V1.mp4','Sunrise MO 4WC')">
+          <img class="reel-thumb" src="projects/9x16/Sunrise_MO_4WC_V1_Thumbnail.png" alt="Sunrise MO 4WC" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">Sunrise</p><p class="reel-name">MO 4WC</p></div>
+        </div>
+
+        <!-- Reel 8 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/Veltins_Reel_2023_V1.mp4','Veltins Reel 2023')">
+          <img class="reel-thumb" src="projects/9x16/Veltins_Reel_2023_V1_Thumbnail.jpg" alt="Veltins Reel 2023" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">Veltins</p><p class="reel-name">Reel 2023</p></div>
+        </div>
+
+        <!-- Reel 9 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/WWP_Intersport_2023.mp4','WWP Intersport 2023')">
+          <img class="reel-thumb" src="projects/9x16/WWP_Intersport_2023_Thumbnail.jpg" alt="WWP Intersport" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">WWP</p><p class="reel-name">Intersport 2023</p></div>
+        </div>
+
+        <!-- Reel 10 -->
+        <div class="reel-card" onclick="openLightbox('https://media.digitalmaker.at/Winzer_12_1.mp4','Winzer')">
+          <img class="reel-thumb" src="projects/9x16/Winzer_12_1_Thumbnail.jpg" alt="Winzer" loading="lazy">
+          <div class="reel-overlay"><div class="reel-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M4 2l8 5-8 5V2z"/></svg></div></div>
+          <div class="reel-info"><p class="reel-client">Winzer</p><p class="reel-name">Kurzfilm</p></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── AI BILDER MARQUEE ── -->
+    <div class="ai-banner" data-reveal>
+      <div class="ai-banner-header">
+        <p class="ai-banner-label">KI-Generiert</p>
+        <h3 class="ai-banner-title">AI Visuals & Motion</h3>
+      </div>
+      <div class="ai-track-wrap">
+        <div class="ai-track">
+          <!-- set 1 -->
+          <div class="ai-item"><img src="projects/ai-bilder/Bild1.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild2.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild3.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild4.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild5.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild6.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild7.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bildx1.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bildx2.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bildx3.png" alt=""></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS1.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><img src="projects/ai-bilder/DCC_BOSS12.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/DCC_BOSS13.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/DCC_BOSS14.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/DCC_BOSS15.png" alt=""></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS4.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS5.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS6.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS7.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS8.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS9.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS10.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS11.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Decke.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Image1.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Image2.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Image3.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Image4.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike1.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike2.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike3.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike4.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike5.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike6.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Mascottchen_Werkfit_pose_3_po.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Mascottchen_Werkfit_pose_waage_po.png" alt=""></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/Messe_1.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/Mika_Shopping_Arena_2025_V2_preview.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Skinnfit_her_green.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Skinnfit_her_yellow_jacket.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Skinnfit_her_yellow_jacket_1.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/export-2025-12-17%20at%2008.50.32.png" alt=""></div>
+          <!-- set 2 — duplicate for seamless loop -->
+          <div class="ai-item"><img src="projects/ai-bilder/Bild1.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild2.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild3.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild4.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild5.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild6.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bild7.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bildx1.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bildx2.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Bildx3.png" alt=""></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS1.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><img src="projects/ai-bilder/DCC_BOSS12.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/DCC_BOSS13.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/DCC_BOSS14.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/DCC_BOSS15.png" alt=""></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS4.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS5.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS6.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS7.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS8.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS9.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS10.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/DCC_BOSS11.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Decke.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Image1.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Image2.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Image3.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Image4.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike1.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike2.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike3.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike4.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike5.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Johnson_antique_Bike6.png" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Mascottchen_Werkfit_pose_3_po.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Mascottchen_Werkfit_pose_waage_po.png" alt=""></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/Messe_1.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><video autoplay muted loop playsinline><source src="https://media.digitalmaker.at/Mika_Shopping_Arena_2025_V2_preview.mp4" type="video/mp4"></video></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Skinnfit_her_green.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Skinnfit_her_yellow_jacket.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/Skinnfit_her_yellow_jacket_1.jpg" alt=""></div>
+          <div class="ai-item"><img src="projects/ai-bilder/export-2025-12-17%20at%2008.50.32.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── ÜBER MICH ── -->
+  <section id="ueber-mich">
+    <div class="about-visual" data-reveal>
+      <div class="about-photo-wrap">
+        <img src="philipp.jpg" alt="Philipp Oberforcher" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+      </div>
+      <div class="about-badge">
+        <strong>10+</strong>
+        Jahre<br>Erfahrung
+      </div>
+    </div>
+    <div class="about-content" data-reveal data-reveal-delay="2">
+      <p class="about-intro">03 — Über mich</p>
+      <h2 class="about-title">Philipp<br>Oberforcher.</h2>
+      <p class="about-text">
+        Ich bin Creative Partner für Agenturen und Unternehmen, die ihre Marken mit emotionalen Inhalten zum Leben erwecken wollen.
+      </p>
+      <p class="about-text">
+        Mit Erfahrung in Motion Design, Postproduktion und 3D-Animation helfe ich dabei, Inhalte zu schaffen, die nicht nur aussehen und klingen – sondern wirklich wirken. Besonders faszinieren mich neue Technologien wie AI Video Generation und datengetriebenes Content Marketing.
+      </p>
+      <div class="about-quote">
+        <p>„Das Leben bewegt sich ziemlich schnell. Wenn man nicht ab und zu stehen bleibt und sich umsieht, könnte man es verpassen."</p>
+        <cite>— Ferris Bueller</cite>
+      </div>
+      <div class="about-skills">
+        <span class="skill-chip">Videoproduktion</span>
+        <span class="skill-chip">Motion Design</span>
+        <span class="skill-chip">3D Animation</span>
+        <span class="skill-chip">AI Content</span>
+        <span class="skill-chip">Postproduktion</span>
+        <span class="skill-chip">Storytelling</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── KONTAKT ── -->
+  <section id="kontakt">
+    <div data-reveal>
+      <p class="section-number">04 — Kontakt</p>
+      <h2 class="section-title">Let's work<br>together.</h2>
+      <br>
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail-text">
+          <p class="contact-detail-label">Adresse</p>
+          <p class="contact-detail-value">Kirchstraße 35, 6900 Bregenz</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-detail-text">
+          <p class="contact-detail-label">E-Mail</p>
+          <p class="contact-detail-value">
+            <a href="mailto:info@digitalmaker.at" style="color:rgba(255,255,255,0.8);">info@digitalmaker.at</a>
+          </p>
+        </div>
+      </div>
+      <div class="contact-social">
+        <a href="https://www.linkedin.com/in/digitalcontentcreation/" target="_blank" class="contact-social-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://www.instagram.com/digital_content_creation/" target="_blank" class="contact-social-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+    <div class="contact-form" data-reveal data-reveal-delay="2">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-input" type="text" id="name" placeholder="Dein Name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">E-Mail</label>
+          <input class="form-input" type="email" id="email" placeholder="deine@email.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="subject">Betreff</label>
+          <input class="form-input" type="text" id="subject" placeholder="Worum geht es?" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Nachricht</label>
+          <textarea class="form-textarea" id="message" placeholder="Erzähl mir von deinem Projekt…" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Nachricht senden →
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p class="footer-copy">© 2025 Digital Content Creation e.U. · Philipp Oberforcher · Bregenz, AT</p>
+    <div class="footer-links">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="cookies.html">Cookies</a>
+    </div>
+  </footer>
+
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()">✕ &nbsp;Schließen</button>
+      <video id="lightboxVideo" controls playsinline></video>
+    </div>
+  </div>
+
+  <script>
+    // ── NAV SCROLL ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ── WORD CYCLE ANIMATION ──
+    const words = ['tell', 'share', 'capture', 'shape', 'elevate'];
+    let wordIndex = 0;
+    const wordEl = document.getElementById('wordCycle');
+    function cycleWords() {
+      wordEl.style.opacity = '0';
+      wordEl.style.transform = 'translateY(10px)';
+      setTimeout(() => {
+        wordIndex = (wordIndex + 1) % words.length;
+        wordEl.textContent = words[wordIndex];
+        wordEl.style.transition = 'opacity 0.4s, transform 0.4s';
+        wordEl.style.opacity = '1';
+        wordEl.style.transform = 'translateY(0)';
+      }, 300);
+    }
+    wordEl.style.transition = 'opacity 0.4s, transform 0.4s';
+    setInterval(cycleWords, 2200);
+
+    // ── SCROLL REVEAL ──
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+    // ── MOBILE MENU ──
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      if (!links) return;
+      const isOpen = links.style.display === 'flex';
+      links.style.display = isOpen ? '' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '100%';
+      links.style.left = '0'; links.style.right = '0';
+      links.style.background = 'var(--cream)';
+      links.style.padding = '1rem 1.5rem 1.5rem';
+      links.style.borderBottom = '1px solid var(--light)';
+      if (!isOpen) links.style.display = 'flex';
+    }
+
+    // ── FORM SUBMIT ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Nachricht gesendet!';
+      btn.style.background = '#2d9e5f';
+      setTimeout(() => {
+        btn.textContent = 'Nachricht senden →';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+
+    // ── LIGHTBOX ──
+    const lightbox = document.getElementById('lightbox');
+    const lightboxVideo = document.getElementById('lightboxVideo');
+
+    function openLightbox(src, title) {
+      lightboxVideo.src = src;
+      lightboxVideo.play();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxVideo.pause();
+      lightboxVideo.src = '';
+      document.body.style.overflow = '';
+    }
+
+    function closeLightboxOnBg(e) {
+      if (e.target === lightbox) closeLightbox();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
