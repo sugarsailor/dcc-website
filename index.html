@@ -993,6 +993,7 @@
 
       /* AI section */
       #ai-content { padding: 4rem 1.25rem; }
+      .ai-avatar-grid { grid-template-columns: 1fr !important; }
       .ai-steps-grid { grid-template-columns: 1fr !important; }
       .ai-ecom-grid { grid-template-columns: 1fr !important; }
       .ai-image-grid { grid-template-columns: 1fr !important; }
@@ -1316,7 +1317,7 @@
       <!-- AI Avatar Videos — same size, 16:9 uniform -->
       <div data-reveal>
         <p style="color: rgba(250,249,245,0.5); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; margin-bottom: 1.5rem;">AI Avatar Beispiele</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div class="ai-avatar-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
 
           <div class="ai-video-card" style="border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.04); cursor: pointer; position: relative; aspect-ratio: 16/9;" onclick="openLightbox('https://media.digitalmaker.at/ai-avatar-1.mp4')">
             <video muted loop playsinline style="width: 100%; height: 100%; display: block; object-fit: cover; position: absolute; inset: 0;" onmouseenter="this.play()" onmouseleave="this.pause(); this.currentTime=0;">
