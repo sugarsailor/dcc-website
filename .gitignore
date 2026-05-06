@@ -15,3 +15,12 @@ DCC_Kaufland_v*.png
 
 # Node
 node_modules/
+
+# Video files (hosted on Backblaze, not GitHub)
+*.mp4
+*.mov
+*.avi
+*.webm
+
+# Large binary assets
+ai-assets/
