@@ -1,2 +1,17 @@
-*.mp4
-Content Homepage/
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Recovery / temp files
+recup_dir*/
+photorec.*
+*.se2
+*.ses
+
+# Misc local files
+CLAUDE.md
+DCC_Kaufland_v*.png
+
+# Node
+node_modules/
