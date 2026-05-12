@@ -2143,7 +2143,7 @@
     <div class="hero-content">
       <p class="hero-label">DCC · Digital Content Creation · Bregenz, AT</p>
       <h1 class="hero-headline" aria-label="AI-Content & Videoproduktion DACH – DCC Digital Content Creation, Bregenz">
-        Deine Konkurrenz<br>baut gerade<br><span class="word-cycle" id="wordCycle">AI-Workflows.</span>
+        Deine Konkurrenz<br>baut gerade<br><span style="color:var(--red);">AI-Workflows.</span>
       </h1>
       <p class="hero-sub">
         Ich baue sie seit zwei Jahren. Für Marken in der DACH-Region, die nicht zuschauen wollen,
@@ -3297,23 +3297,7 @@
       navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // ── WORD CYCLE ANIMATION ──
-    const words = ['tell', 'share', 'capture', 'shape', 'elevate'];
-    let wordIndex = 0;
-    const wordEl = document.getElementById('wordCycle');
-    function cycleWords() {
-      wordEl.style.opacity = '0';
-      wordEl.style.transform = 'translateY(10px)';
-      setTimeout(() => {
-        wordIndex = (wordIndex + 1) % words.length;
-        wordEl.textContent = words[wordIndex];
-        wordEl.style.transition = 'opacity 0.4s, transform 0.4s';
-        wordEl.style.opacity = '1';
-        wordEl.style.transform = 'translateY(0)';
-      }, 300);
-    }
-    wordEl.style.transition = 'opacity 0.4s, transform 0.4s';
-    setInterval(cycleWords, 2200);
+    // ── WORD CYCLE ANIMATION — disabled (static headline) ──
 
     // ── SCROLL REVEAL ──
     const revealObserver = new IntersectionObserver((entries) => {
