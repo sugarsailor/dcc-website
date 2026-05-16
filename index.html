@@ -298,6 +298,7 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      overflow-x: hidden; /* prevents horizontal scroll on iOS Safari */
     }
 
     body {
@@ -2078,6 +2079,27 @@
         padding: 4rem 1.25rem;
         grid-template-columns: 1fr;
         gap: 2.5rem;
+      }
+
+      /* Problem section */
+      #problem {
+        padding: 4rem 1.25rem !important;
+      }
+      .problem-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Plan section */
+      #plan {
+        padding: 4rem 1.25rem !important;
+      }
+
+      /* Einsatz / Stakes section */
+      #einsatz {
+        padding: 4rem 1.25rem !important;
+      }
+      .stakes-grid {
+        grid-template-columns: 1fr !important;
       }
 
       /* Section headers */
