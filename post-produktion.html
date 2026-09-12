@@ -9,6 +9,9 @@
   <meta name="author" content="Philipp Oberforcher" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://digitalmaker.at/post-produktion.html" />
+  <link rel="alternate" hreflang="de" href="https://digitalmaker.at/post-produktion.html" />
+  <link rel="alternate" hreflang="en" href="https://digitalmaker.at/en/post-produktion.html" />
+  <link rel="alternate" hreflang="x-default" href="https://digitalmaker.at/post-produktion.html" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://digitalmaker.at/post-produktion.html" />
   <meta property="og:title" content="Post-Produktion Österreich – Color Grading & VFX Freelancer | digitalmaker.at" />
@@ -94,6 +97,13 @@
     .nav-links a:hover { opacity: 1; }
     .nav-cta { background: var(--red); color: var(--white); padding: 0.55rem 1.4rem; border-radius: 2rem; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
     .nav-cta:hover { background: #c93d3d; }
+    /* LANG SWITCH */
+    .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-lang { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; letter-spacing: 0.1em; font-weight: 600; }
+    .nav-lang a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .nav-lang a:hover { color: var(--white); }
+    .nav-lang a.active { color: var(--red); }
+    .nav-lang span { color: rgba(255,255,255,0.25); }
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
@@ -201,11 +211,14 @@
     <ul class="nav-links">
       <li><a href="index.html#leistungen">Leistungen</a></li>
       <li><a href="index.html#ai-content">Gen AI</a></li>
-      <li><a href="index.html#projekte">Projekte</a></li>
+      <li><a href="index.html#beweis">Projekte</a></li>
       <li><a href="index.html#ueber-mich">Über mich</a></li>
       <li><a href="index.html#kontakt">Kontakt</a></li>
     </ul>
-    <a href="index.html#kontakt" class="nav-cta">Projekt starten</a>
+    <div class="nav-right">
+      <div class="nav-lang" aria-label="Sprache"><a href="/post-produktion.html" hreflang="de" lang="de" class="active">DE</a><span>/</span><a href="/en/post-produktion.html" hreflang="en" lang="en">EN</a></div>
+      <a href="index.html#kontakt" class="nav-cta">Projekt starten</a>
+    </div>
   </nav>
   <main>
     <div class="page-hero">
