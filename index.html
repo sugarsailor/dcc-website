@@ -518,7 +518,7 @@
       position: fixed;
       inset: 0;
       background: rgba(20, 20, 19, 0.5);
-      z-index: 100;
+      z-index: 99; /* unter nav (100), sonst liegt das Blur-Overlay über dem Menü-Panel */
       backdrop-filter: blur(3px);
       -webkit-backdrop-filter: blur(3px);
       opacity: 0;
