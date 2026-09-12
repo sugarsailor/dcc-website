@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.digitalmaker.at/sitemap.xml
+Sitemap: https://digitalmaker.at/sitemap.xml
