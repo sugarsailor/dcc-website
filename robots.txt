@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://digitalmaker.at/sitemap.xml
+LLM-Content: https://digitalmaker.at/llms.txt

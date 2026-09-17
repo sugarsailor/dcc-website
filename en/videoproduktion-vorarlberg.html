@@ -222,7 +222,184 @@
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a { color: rgba(255,255,255,0.4); font-size: 0.78rem; text-decoration: none; }
     .footer-links a:hover { color: var(--white); }
+
+    /* ── PREISE (Service-Seite) ── */
+    .preis-section .preis-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .preis-section .preis-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 0; }
+    .preis-section { margin-bottom: 5rem; }
+    .preis-scroll { margin-top: 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .preis-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 560px; background: var(--white); }
+    .preis-table caption { text-align: left; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(20,20,19,0.4); padding-bottom: 0.9rem; }
+    .preis-table th, .preis-table td { text-align: left; padding: 0.95rem 1rem; border-bottom: 1px solid #e8e6e0; vertical-align: top; }
+    .preis-table thead th { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(20,20,19,0.45); border-bottom: 2px solid var(--black); white-space: nowrap; }
+    .preis-table tbody th { font-weight: 700; color: var(--black); }
+    .preis-table td.preis { font-weight: 700; color: var(--black); white-space: nowrap; }
+    .preis-table td.preis-ch { font-weight: 600; color: rgba(20,20,19,0.62); white-space: nowrap; }
+    .preis-table td.basis { color: rgba(20,20,19,0.55); font-size: 0.82rem; line-height: 1.6; }
+    .preis-note { margin-top: 1.25rem; font-size: 0.8rem; color: rgba(20,20,19,0.5); line-height: 1.8; }
   </style>
+  <!-- ── SERVICE + OFFER SCHEMA ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://digitalmaker.at/videoproduktion-vorarlberg.html#service-videoproduktion",
+    "name": "Video Production & Image Film Vorarlberg",
+    "serviceType": "Video Production & Image Film",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "DCC – Digital Content Creation",
+      "url": "https://digitalmaker.at/"
+    },
+    "description": "Image film, corporate video, interview, event and product video – from concept through shoot to edit, color and sound.",
+    "areaServed": [
+      {
+        "@type": "State",
+        "name": "Vorarlberg"
+      },
+      {
+        "@type": "Country",
+        "name": "AT"
+      },
+      {
+        "@type": "Country",
+        "name": "CH"
+      }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": {
+          "@type": "Country",
+          "name": "AT"
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 3400,
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      },
+      {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": {
+          "@type": "Country",
+          "name": "CH"
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 4080,
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://digitalmaker.at/videoproduktion-vorarlberg.html#service-social-media-paket",
+    "name": "Social Media Package (3 reels) Vorarlberg",
+    "serviceType": "Social Media Package (3 reels)",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "DCC – Digital Content Creation",
+      "url": "https://digitalmaker.at/"
+    },
+    "description": "Three platform-native reels for Instagram, TikTok and LinkedIn – vertical, subtitled, ready to publish.",
+    "areaServed": [
+      {
+        "@type": "State",
+        "name": "Vorarlberg"
+      },
+      {
+        "@type": "Country",
+        "name": "AT"
+      },
+      {
+        "@type": "Country",
+        "name": "CH"
+      }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": {
+          "@type": "Country",
+          "name": "AT"
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 1200,
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      },
+      {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": {
+          "@type": "Country",
+          "name": "CH"
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 1440,
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://digitalmaker.at/videoproduktion-vorarlberg.html#service-dcc-local",
+    "name": "DCC Local Vorarlberg",
+    "serviceType": "DCC Local",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "DCC – Digital Content Creation",
+      "url": "https://digitalmaker.at/"
+    },
+    "description": "Reduced entry rate for associations, clubs, non-profit organisations and small local businesses in Vorarlberg.",
+    "areaServed": [
+      {
+        "@type": "State",
+        "name": "Vorarlberg"
+      },
+      {
+        "@type": "Country",
+        "name": "AT"
+      }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": {
+          "@type": "Country",
+          "name": "AT"
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 490,
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -370,6 +547,46 @@
           <h3>How quickly can you start a project?</h3>
           <p>For smaller projects, often within a few days. Larger productions we plan together – typically with 2–4 weeks of lead time for shooting days.</p>
         </div>
+      </div>
+
+      <div class="preis-section" id="preise">
+        <div class="preis-label">Pricing</div>
+        <h2 class="preis-title">What it costs</h2>
+        <div class="preis-scroll">
+          <table class="preis-table">
+            <caption>Reference prices Austria & Switzerland</caption>
+            <thead>
+              <tr><th scope="col">Service</th><th scope="col">Price Austria</th><th scope="col">Price Switzerland</th><th scope="col">Basis</th></tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Video Production & Image Film</th>
+              <td class="preis">from €3,400</td>
+              <td class="preis-ch">from €4,080</td>
+              <td class="basis">1 outdoor shoot day + 2 days post-production</td>
+            </tr>
+            <tr>
+              <th scope="row">Social Media Package (3 reels)</th>
+              <td class="preis">from €1,200</td>
+              <td class="preis-ch">from €1,440</td>
+              <td class="basis">Half-day shoot + half-day edit</td>
+            </tr>
+            <tr>
+              <th scope="row">DCC Local</th>
+              <td class="preis">from €490</td>
+              <td class="preis-ch">– Austria only</td>
+              <td class="basis">Associations, clubs, non-profits and small local businesses in Vorarlberg</td>
+            </tr>
+            <tr>
+              <th scope="row">Day rate</th>
+              <td class="preis">€1,000 – €1,400</td>
+              <td class="preis-ch">€1,200 – €1,680</td>
+              <td class="basis">Depending on service – from post-production to outdoor shoot</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="preis-note"><strong>All prices are net</strong>, excluding VAT. For clients in Switzerland the reverse-charge procedure applies. Prices for Germany on request. These are entry-level prices – you get a binding quote after the free intro call. <a href="index.html#preise" style="color:var(--red);font-weight:600;">See all prices →</a></p>
       </div>
 
       <div class="cta-block">

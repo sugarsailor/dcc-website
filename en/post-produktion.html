@@ -47,8 +47,51 @@
       }
     },
     "description": "Professional post-production in Austria. Color grading, VFX, sound design & editing – Philipp Oberforcher, freelancer from Bregenz for film and video finishing across the DACH region.",
-    "areaServed": [{"@type": "Country", "name": "Austria"}, {"@type": "Country", "name": "Germany"}, {"@type": "Country", "name": "Switzerland"}],
-    "url": "https://digitalmaker.at/en/post-produktion.html"
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "Austria"
+      },
+      {
+        "@type": "Country",
+        "name": "Germany"
+      },
+      {
+        "@type": "Country",
+        "name": "Switzerland"
+      }
+    ],
+    "url": "https://digitalmaker.at/en/post-produktion.html",
+    "offers": [
+      {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": {
+          "@type": "Country",
+          "name": "AT"
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 500,
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      },
+      {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": {
+          "@type": "Country",
+          "name": "CH"
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 600,
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    ]
   }
   </script>
 
@@ -206,6 +249,23 @@
     .related-card:hover { border-color: var(--red); transform: translateY(-2px); }
     .related-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
     .related-card h3 { font-size: 0.88rem; font-weight: 700; }
+
+    /* ── PREISE (Service-Seite) ── */
+    .preis-section .preis-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .preis-section .preis-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 0; }
+    .preis-section { margin-bottom: 5rem; }
+    .preis-scroll { margin-top: 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .preis-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 560px; background: var(--white); }
+    .preis-table caption { text-align: left; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(20,20,19,0.4); padding-bottom: 0.9rem; }
+    .preis-table th, .preis-table td { text-align: left; padding: 0.95rem 1rem; border-bottom: 1px solid #e8e6e0; vertical-align: top; }
+    .preis-table thead th { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(20,20,19,0.45); border-bottom: 2px solid var(--black); white-space: nowrap; }
+    .preis-table tbody th { font-weight: 700; color: var(--black); }
+    .preis-table td.preis { font-weight: 700; color: var(--black); white-space: nowrap; }
+    .preis-table td.preis-ch { font-weight: 600; color: rgba(20,20,19,0.62); white-space: nowrap; }
+    .preis-table td.basis { color: rgba(20,20,19,0.55); font-size: 0.82rem; line-height: 1.6; }
+    .preis-note { margin-top: 1.25rem; font-size: 0.8rem; color: rgba(20,20,19,0.5); line-height: 1.8; }
   </style>
 </head>
 <body>
@@ -321,6 +381,34 @@
         <h3>AI Video</h3>
       </a>
         </div>
+      </div>
+
+      <div class="preis-section" id="preise">
+        <div class="preis-label">Pricing</div>
+        <h2 class="preis-title">What it costs</h2>
+        <div class="preis-scroll">
+          <table class="preis-table">
+            <caption>Reference prices Austria & Switzerland</caption>
+            <thead>
+              <tr><th scope="col">Service</th><th scope="col">Price Austria</th><th scope="col">Price Switzerland</th><th scope="col">Basis</th></tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Post-Production</th>
+              <td class="preis">from €500</td>
+              <td class="preis-ch">from €600</td>
+              <td class="basis">Half-day – edit day €1,000 (AT) / €1,200 (CH)</td>
+            </tr>
+            <tr>
+              <th scope="row">Day rate</th>
+              <td class="preis">€1,000 – €1,400</td>
+              <td class="preis-ch">€1,200 – €1,680</td>
+              <td class="basis">Depending on service – from post-production to outdoor shoot</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="preis-note"><strong>All prices are net</strong>, excluding VAT. For clients in Switzerland the reverse-charge procedure applies. Prices for Germany on request. These are entry-level prices – you get a binding quote after the free intro call. <a href="index.html#preise" style="color:var(--red);font-weight:600;">See all prices →</a></p>
       </div>
 
       <div class="cta-block">

@@ -24,3 +24,6 @@ node_modules/
 
 # Large binary assets
 ai-assets/
+
+# Claude Code local preview config
+.claude/

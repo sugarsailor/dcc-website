@@ -91,15 +91,115 @@
           "@type": "ContactPoint",
           "email": "info@digitalmaker.at",
           "contactType": "customer service"
-        }
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Leistungen & Preise",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://digitalmaker.at/#service-videoproduktion"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://digitalmaker.at/#service-social-media-paket"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://digitalmaker.at/#service-motion-design"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://digitalmaker.at/#service-ki-content"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://digitalmaker.at/#service-postproduktion"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://digitalmaker.at/#service-media-manager"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://digitalmaker.at/#service-dcc-air"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://digitalmaker.at/#service-dcc-local"
+              }
+            }
+          ]
+        },
+        "potentialAction": [
+          {
+            "@type": "ReserveAction",
+            "name": "Kostenloses Erstgespräch buchen",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://digitalmaker.at/#kontakt",
+              "inLanguage": "de-AT",
+              "actionPlatform": [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/MobileWebPlatform"
+              ]
+            },
+            "result": {
+              "@type": "Reservation",
+              "name": "Erstgespräch (30 Minuten, kostenlos)"
+            }
+          },
+          {
+            "@type": "CommunicateAction",
+            "name": "Projektanfrage senden",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "mailto:info@digitalmaker.at"
+            }
+          }
+        ]
       },
       {
         "@type": "WebSite",
         "@id": "https://digitalmaker.at/#website",
         "url": "https://digitalmaker.at/",
         "name": "DCC – Digital Content Creation",
-        "publisher": { "@id": "https://digitalmaker.at/#organization" },
-        "inLanguage": "de-AT"
+        "publisher": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
+        "inLanguage": "de-AT",
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "name": "Kostenloses Erstgespräch buchen",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://digitalmaker.at/#kontakt",
+            "inLanguage": "de-AT",
+            "actionPlatform": [
+              "https://schema.org/DesktopWebPlatform",
+              "https://schema.org/MobileWebPlatform"
+            ]
+          },
+          "result": {
+            "@type": "Reservation",
+            "name": "Erstgespräch (30 Minuten, kostenlos)"
+          }
+        }
       },
       {
         "@type": "WebPage",
@@ -107,23 +207,13 @@
         "url": "https://digitalmaker.at/",
         "name": "Videoproduktion & AI-Content Bregenz | DCC digitalmaker.at",
         "description": "Philipp Oberforcher – Freelancer für Motion Design, Imagefilm & Video Produktion in Österreich.",
-        "isPartOf": { "@id": "https://digitalmaker.at/#website" },
-        "about": { "@id": "https://digitalmaker.at/#organization" },
+        "isPartOf": {
+          "@id": "https://digitalmaker.at/#website"
+        },
+        "about": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
         "inLanguage": "de-AT"
-      },
-      {
-        "@type": "Service",
-        "name": "Videoproduktion",
-        "provider": { "@id": "https://digitalmaker.at/#organization" },
-        "description": "Professionelle Videoproduktion für Unternehmen, Agenturen und Marken – von Corporate Film bis Social Media Content.",
-        "areaServed": { "@type": "Country", "name": "Austria" }
-      },
-      {
-        "@type": "Service",
-        "name": "Gen AI Content & Automation",
-        "provider": { "@id": "https://digitalmaker.at/#organization" },
-        "description": "KI-gestützte Bild- und Videogenerierung, nodebasierte AI-Workflows für Webshop-Produktbilder und skalierbare Kampagnen mit bis zu 80% Kosteneinsparung.",
-        "areaServed": { "@type": "Country", "name": "Austria" }
       },
       {
         "@type": "LocalBusiness",
@@ -148,22 +238,489 @@
           "longitude": 9.7471
         },
         "areaServed": [
-          { "@type": "Country", "name": "Austria" },
-          { "@type": "Country", "name": "Germany" },
-          { "@type": "Country", "name": "Switzerland" }
+          {
+            "@type": "Country",
+            "name": "Austria"
+          },
+          {
+            "@type": "Country",
+            "name": "Germany"
+          },
+          {
+            "@type": "Country",
+            "name": "Switzerland"
+          }
         ],
         "priceRange": "€€",
         "openingHours": "Mo-Fr 09:00-18:00",
         "sameAs": [
           "https://www.linkedin.com/in/digitalcontentcreation/",
           "https://www.instagram.com/digital_content_creation/"
+        ],
+        "potentialAction": [
+          {
+            "@type": "ReserveAction",
+            "name": "Kostenloses Erstgespräch buchen",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://digitalmaker.at/#kontakt",
+              "inLanguage": "de-AT",
+              "actionPlatform": [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/MobileWebPlatform"
+              ]
+            },
+            "result": {
+              "@type": "Reservation",
+              "name": "Erstgespräch (30 Minuten, kostenlos)"
+            }
+          },
+          {
+            "@type": "CommunicateAction",
+            "name": "Projektanfrage senden",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "mailto:info@digitalmaker.at"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://digitalmaker.at/#service-videoproduktion",
+        "name": "Videoproduktion & Imagefilm",
+        "serviceType": "Videoproduktion & Imagefilm",
+        "provider": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
+        "description": "Imagefilm, Corporate Video, Interview, Event und Produktvideo – von Konzept über Dreh bis Schnitt, Color und Ton.",
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "AT"
+          },
+          {
+            "@type": "Country",
+            "name": "CH"
+          },
+          {
+            "@type": "Country",
+            "name": "DE"
+          }
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "AT"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 3400,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/videoproduktion.html"
+          },
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "CH"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 4080,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/videoproduktion.html"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://digitalmaker.at/#service-social-media-paket",
+        "name": "Social-Media-Paket (3 Reels)",
+        "serviceType": "Social-Media-Paket (3 Reels)",
+        "provider": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
+        "description": "Drei plattformgerechte Reels für Instagram, TikTok und LinkedIn – vertikal, untertitelt, sendefertig.",
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "AT"
+          },
+          {
+            "@type": "Country",
+            "name": "CH"
+          },
+          {
+            "@type": "Country",
+            "name": "DE"
+          }
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "AT"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 1200,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/videoproduktion.html"
+          },
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "CH"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 1440,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/videoproduktion.html"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://digitalmaker.at/#service-motion-design",
+        "name": "Motion Design & 3D",
+        "serviceType": "Motion Design & 3D",
+        "provider": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
+        "description": "Animierte Logos, Bauchbinden, Infografiken, Produktanimationen und 3D-Renderings für Web, Social und Messe.",
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "AT"
+          },
+          {
+            "@type": "Country",
+            "name": "CH"
+          },
+          {
+            "@type": "Country",
+            "name": "DE"
+          }
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "AT"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 500,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/motion-design.html"
+          },
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "CH"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 600,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/motion-design.html"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://digitalmaker.at/#service-ki-content",
+        "name": "KI-Content & Automation",
+        "serviceType": "KI-Content & Automation",
+        "provider": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
+        "description": "KI-gestützte Bild- und Videogenerierung sowie nodebasierte AI-Workflows, etwa für Webshop-Produktbilder und skalierbare Kampagnen.",
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "AT"
+          },
+          {
+            "@type": "Country",
+            "name": "CH"
+          },
+          {
+            "@type": "Country",
+            "name": "DE"
+          }
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "AT"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 600,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/ai-video.html"
+          },
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "CH"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 720,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/ai-video.html"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://digitalmaker.at/#service-postproduktion",
+        "name": "Postproduktion",
+        "serviceType": "Postproduktion",
+        "provider": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
+        "description": "Schnitt, Color Grading, Sounddesign, Untertitel und Formatanpassungen – auch für bestehendes Material.",
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "AT"
+          },
+          {
+            "@type": "Country",
+            "name": "CH"
+          },
+          {
+            "@type": "Country",
+            "name": "DE"
+          }
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "AT"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 500,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/post-produktion.html"
+          },
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "CH"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 600,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/post-produktion.html"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://digitalmaker.at/#service-media-manager",
+        "name": "Externer Media Manager",
+        "serviceType": "Externer Media Manager",
+        "provider": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
+        "description": "Laufende Betreuung von Corporate Design, Website-Content, Social Media, Kampagnen-Creatives und Video als Monatspaket.",
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "AT"
+          },
+          {
+            "@type": "Country",
+            "name": "CH"
+          },
+          {
+            "@type": "Country",
+            "name": "DE"
+          }
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "AT"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 4500,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false,
+              "billingDuration": 1,
+              "billingIncrement": 1,
+              "unitCode": "MON"
+            },
+            "url": "https://digitalmaker.at/externer-media-manager.html"
+          },
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "CH"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 5400,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false,
+              "billingDuration": 1,
+              "billingIncrement": 1,
+              "unitCode": "MON"
+            },
+            "url": "https://digitalmaker.at/externer-media-manager.html"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://digitalmaker.at/#service-dcc-air",
+        "name": "Drohne / DCC Air",
+        "serviceType": "Drohne / DCC Air",
+        "provider": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
+        "description": "Professionelle Luftaufnahmen für Imagefilm, Immobilien, Event und Industrie – inklusive Genehmigungen und Versicherung.",
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "AT"
+          },
+          {
+            "@type": "Country",
+            "name": "CH"
+          },
+          {
+            "@type": "Country",
+            "name": "DE"
+          }
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "AT"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 700,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/videoproduktion.html"
+          },
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "CH"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 840,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/videoproduktion.html"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://digitalmaker.at/#service-dcc-local",
+        "name": "DCC Local",
+        "serviceType": "DCC Local",
+        "provider": {
+          "@id": "https://digitalmaker.at/#organization"
+        },
+        "description": "Reduzierter Einstiegstarif für Vereine, Clubs, Non-Profit-Organisationen und lokale Kleinbetriebe in Vorarlberg.",
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "AT"
+          }
+        ],
+        "offers": [
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": {
+              "@type": "Country",
+              "name": "AT"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 490,
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            },
+            "url": "https://digitalmaker.at/videoproduktion-vorarlberg.html"
+          }
         ]
       }
     ]
   }
   </script>
 
-  <!-- ── FAQ SCHEMA ── -->
+  <!-- ── FAQ SCHEMA (mirrors visible #faq section) ── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -171,10 +728,58 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Was unterscheidet euch von einer klassischen Filmproduktionsfirma?",
+        "name": "Was kostet ein Imagefilm bei DCC?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Filmproduktionen liefern ein einmaliges, aufwendiges Endprodukt. Wir bauen ein System, das kontinuierlich plattformgerechten Content produziert – schneller, skalierbarer und direkt auf Engagement und Performance ausgerichtet."
+          "text": "Ein Imagefilm startet bei 3.400 € netto in Österreich und 4.080 € netto in der Schweiz. Darin enthalten sind ein Drehtag outdoor und zwei Tage Postproduktion. Mehr Drehtage, zusätzliche Schnittfassungen oder erweiterte Nutzungsrechte erhöhen den Preis – ein verbindliches Angebot bekommst du nach dem kostenlosen Erstgespräch."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was kostet ein Social-Media-Paket mit Reels?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das Social-Media-Paket mit drei Reels startet bei 1.200 € netto in Österreich und 1.440 € netto in der Schweiz. Basis sind ein Halbtag Dreh und ein Halbtag Schnitt. Die Reels werden vertikal, untertitelt und plattformgerecht für Instagram, TikTok und LinkedIn geliefert."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie hoch ist der Tagessatz?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Der Tagessatz liegt zwischen 1.000 € und 1.400 € netto in Österreich, in der Schweiz zwischen 1.200 € und 1.680 € netto. Die Spanne richtet sich nach der Leistung: Postproduktion liegt am unteren Ende, ein Outdoor-Drehtag am oberen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was kostet ein externer Media Manager pro Monat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das Monatspaket startet bei 4.500 € netto in Österreich und 5.400 € netto in der Schweiz. Enthalten sind fünf Arbeitstage pro Monat bei einer Mindestlaufzeit von sechs Monaten. Zum Vergleich: Eine Festanstellung kostet zusätzlich Lohnnebenkosten, Equipment und Software-Lizenzen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Gibt es günstigere Konditionen für Vereine und kleine Betriebe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Über DCC Local starten Projekte für Vereine, Clubs, Non-Profit-Organisationen und lokale Kleinbetriebe in Vorarlberg bei 490 € netto. Das Angebot gilt ausschließlich in Österreich."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie werden Kunden aus der Schweiz und Deutschland abgerechnet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Alle Preise verstehen sich netto, exklusive Umsatzsteuer. Für Kunden in der Schweiz gilt der Übergang der Steuerschuld (Bezugsteuer), die Schweizer Preise liegen 20 Prozent über den österreichischen. Preise für Deutschland kläre ich auf Anfrage im Erstgespräch."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was unterscheidet DCC von einer klassischen Filmproduktionsfirma?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Filmproduktionen liefern ein einmaliges, aufwendiges Endprodukt. DCC baut ein System, das kontinuierlich plattformgerechten Content produziert – schneller, skalierbarer und direkt auf Engagement und Performance ausgerichtet."
         }
       },
       {
@@ -195,10 +800,10 @@
       },
       {
         "@type": "Question",
-        "name": "Wie startet man zusammen?",
+        "name": "Wie startet man die Zusammenarbeit?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Mit einem kostenlosen Erstgespräch, in dem wir den aktuellen Content-Status analysieren. Danach wählen wir gemeinsam das passende Paket und starten mit einem klaren Plan."
+          "text": "Mit einem kostenlosen Erstgespräch von 30 Minuten, in dem wir den aktuellen Content-Status analysieren. Danach wählen wir gemeinsam das passende Paket und starten mit einem klaren Plan."
         }
       },
       {
@@ -223,6 +828,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Ja – ich arbeite in ganz Vorarlberg und bin auch für Projekte in der Bodenseeregion sowie im gesamten DACH-Raum verfügbar. Post-Produktion und Motion Design laufen vollständig remote."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mit welchen Marken hat DCC bereits gearbeitet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DCC hat für über 60 Marken produziert. Zu den Direktkunden zählen unter anderem Gantner Instruments, Hilcona, BTV, Volksbank, Kästle, HEAD, Simplon, Aerocompact, Dyntex, Käserebellen, Animalicum und Klimacent. Über Agenturpartner sind Projekte für Marken wie Porsche, Audi, Mercedes, Mastercard, UEFA, Swiss-Ski, Alpla, Doppelmayr, Hilti, Veltins und das Hahnenkamm-Rennen Kitzbühel entstanden – dort lag die Kundenbeziehung bei der jeweiligen Agentur. Die vollständige Liste steht im Abschnitt Kunden."
         }
       }
     ]
@@ -2177,6 +2790,64 @@
         padding: 0;
       }
     }
+
+    /* ── KUNDEN ── */
+    #kunden { background: var(--white); padding: 7rem 2rem; border-top: 1px solid rgba(20,20,19,0.08); }
+    .kunden-wrap { max-width: 1100px; margin: 0 auto; }
+    .kunden-lead { color: var(--gray); font-size: 1rem; line-height: 1.8; max-width: 640px; margin-top: 1.25rem; }
+    .kunden-block { margin-top: 3.5rem; }
+    .kunden-h3 { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(20,20,19,0.45); margin-bottom: 1.25rem; }
+    .kunden-h3 .cnt { color: var(--red); }
+    .kunden-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .kunden-tag { font-size: 0.82rem; font-weight: 600; color: var(--black);
+      background: var(--cream); border: 1px solid #e8e6e0; border-radius: 2rem; padding: 0.45rem 1rem; }
+    .kunden-agency { margin-top: 1.75rem; }
+    .kunden-agency-name { font-size: 0.82rem; font-weight: 700; color: var(--black); margin-bottom: 0.75rem; }
+    .kunden-agency-name span { font-weight: 400; color: rgba(20,20,19,0.45); }
+    .kunden-tag.via { background: var(--white); color: rgba(20,20,19,0.68); font-weight: 500; }
+    .kunden-note { margin-top: 2.5rem; font-size: 0.8rem; color: rgba(20,20,19,0.5); line-height: 1.8; }
+    @media (max-width: 768px) { #kunden { padding: 4.5rem 1.25rem; } }
+
+    /* ── PREISE ── */
+    #preise { background: var(--white); padding: 7rem 2rem; border-top: 1px solid rgba(20,20,19,0.08); }
+    .preis-wrap { max-width: 1100px; margin: 0 auto; }
+    .preis-lead { color: var(--gray); font-size: 1rem; line-height: 1.8; max-width: 640px; margin-top: 1.25rem; }
+    .preis-scroll { margin-top: 3rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .preis-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 640px; }
+    .preis-table caption { text-align: left; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(20,20,19,0.4); padding-bottom: 1rem; }
+    .preis-table th, .preis-table td { text-align: left; padding: 1rem 1rem; border-bottom: 1px solid #e8e6e0; vertical-align: top; }
+    .preis-table thead th { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(20,20,19,0.45); border-bottom: 2px solid var(--black); white-space: nowrap; }
+    .preis-table tbody th { font-weight: 700; color: var(--black); }
+    .preis-table td.preis { font-weight: 700; color: var(--black); white-space: nowrap; }
+    .preis-table td.preis-ch { font-weight: 600; color: rgba(20,20,19,0.62); white-space: nowrap; }
+    .preis-table td.basis { color: rgba(20,20,19,0.55); font-size: 0.82rem; line-height: 1.6; }
+    .preis-table tbody tr:hover { background: var(--cream); }
+    .preis-note { margin-top: 1.5rem; font-size: 0.8rem; color: rgba(20,20,19,0.5); line-height: 1.8; }
+    .preis-cta { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    @media (max-width: 768px) {
+      #preise { padding: 4.5rem 1.25rem; }
+      .preis-table th, .preis-table td { padding: 0.85rem 0.7rem; }
+    }
+
+    /* ── FAQ (visible, mirrors FAQPage schema) ── */
+    #faq { background: var(--cream); padding: 7rem 2rem; border-top: 1px solid rgba(20,20,19,0.08); }
+    .faq-wrap { max-width: 900px; margin: 0 auto; }
+    .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item { border: 1px solid #e8e6e0; border-radius: 0.75rem; overflow: hidden; background: var(--white); }
+    .faq-q {
+      width: 100%; text-align: left; padding: 1.2rem 1.5rem;
+      background: var(--white); border: none; cursor: pointer;
+      font-family: var(--font); font-size: 0.95rem; font-weight: 600; color: var(--black);
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-q .arrow { color: var(--red); font-size: 1.1rem; transition: transform 0.2s; flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .arrow { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 1.5rem 1.2rem; font-size: 0.9rem; color: var(--gray); line-height: 1.8; }
+    .faq-a.open { display: block; }
+    @media (max-width: 768px) { #faq { padding: 4.5rem 1.25rem; } }
   </style>
 </head>
 
@@ -2191,6 +2862,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#preise">Preise</a></li>
       <li><a href="#ai-content">Gen AI</a></li>
       <li><a href="#beweis">Projekte</a></li>
       <li><a href="#dcc-air">DCC Air</a></li>
@@ -2388,11 +3060,91 @@
   </section>
 
   <!-- ── MEDIA MANAGER ── -->
+  <!-- ── PREISE ── -->
+  <section id="preise" aria-labelledby="preise-title">
+    <div class="preis-wrap">
+      <div data-reveal>
+        <p class="section-number">05 — Preise</p>
+        <h2 class="section-title" id="preise-title">Was es kostet.<br>Ohne Ratespiel.</h2>
+        <p class="preis-lead">Alle Richtpreise auf einen Blick — damit du vor dem Erstgespräch weißt, in welcher Größenordnung dein Projekt liegt. Der Endpreis hängt von Drehtagen, Anzahl der Deliverables und Nutzungsrechten ab.</p>
+      </div>
+      <div class="preis-scroll" data-reveal data-reveal-delay="1">
+        <table class="preis-table">
+          <caption>Richtpreise Österreich & Schweiz</caption>
+          <thead>
+            <tr><th scope="col">Leistung</th><th scope="col">Preis Österreich</th><th scope="col">Preis Schweiz</th><th scope="col">Basis</th></tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">Videoproduktion & Imagefilm</th>
+            <td class="preis">ab 3.400 €</td>
+            <td class="preis-ch">ab 4.080 €</td>
+            <td class="basis">1 Drehtag Outdoor + 2 Tage Postproduktion</td>
+          </tr>
+          <tr>
+            <th scope="row">Social-Media-Paket (3 Reels)</th>
+            <td class="preis">ab 1.200 €</td>
+            <td class="preis-ch">ab 1.440 €</td>
+            <td class="basis">Halbtag Dreh + Halbtag Schnitt</td>
+          </tr>
+          <tr>
+            <th scope="row">Motion Design & 3D</th>
+            <td class="preis">ab 500 €</td>
+            <td class="preis-ch">ab 600 €</td>
+            <td class="basis">Halbtag – ganzer Tag 1.000 € (AT) / 1.200 € (CH)</td>
+          </tr>
+          <tr>
+            <th scope="row">KI-Content & Automation</th>
+            <td class="preis">ab 600 €</td>
+            <td class="preis-ch">ab 720 €</td>
+            <td class="basis">Halbtag – Workflow-Setup ab 1.200 € (AT) / 1.440 € (CH)</td>
+          </tr>
+          <tr>
+            <th scope="row">Postproduktion</th>
+            <td class="preis">ab 500 €</td>
+            <td class="preis-ch">ab 600 €</td>
+            <td class="basis">Halbtag – Schnitt-Tag 1.000 € (AT) / 1.200 € (CH)</td>
+          </tr>
+          <tr>
+            <th scope="row">Externer Media Manager</th>
+            <td class="preis">ab 4.500 €/Monat</td>
+            <td class="preis-ch">ab 5.400 €/Monat</td>
+            <td class="basis">5 Tage pro Monat, Mindestlaufzeit 6 Monate</td>
+          </tr>
+          <tr>
+            <th scope="row">Drohne / DCC Air</th>
+            <td class="preis">ab 700 €</td>
+            <td class="preis-ch">ab 840 €</td>
+            <td class="basis">Halbtag – ganzer Tag 1.400 € (AT) / 1.680 € (CH)</td>
+          </tr>
+          <tr>
+            <th scope="row">DCC Local</th>
+            <td class="preis">ab 490 €</td>
+            <td class="preis-ch">– nur Österreich</td>
+            <td class="basis">Vereine, Clubs, Non-Profits und lokale Kleinbetriebe in Vorarlberg</td>
+          </tr>
+          <tr>
+            <th scope="row">Tagessatz</th>
+            <td class="preis">1.000 € – 1.400 €</td>
+            <td class="preis-ch">1.200 € – 1.680 €</td>
+            <td class="basis">Je nach Leistung – von Postproduktion bis Outdoor-Dreh</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="preis-note" data-reveal><strong>Alle Preise netto</strong>, exklusive Umsatzsteuer. Für Kunden in der Schweiz gilt der Übergang der Steuerschuld (Bezugsteuer). Preise für Deutschland auf Anfrage. Angegeben sind Einstiegspreise — ein konkretes Angebot bekommst du nach dem Erstgespräch.</p>
+      <div class="preis-cta" data-reveal>
+        <a href="#kontakt" class="btn-primary">Erstgespräch buchen</a>
+        <a href="#leistungen" class="btn-ghost">Leistungen im Detail</a>
+      </div>
+    </div>
+  </section>
+
   <section id="media-manager" style="background: var(--cream); padding: 7rem 2rem; border-top: 1px solid rgba(20,20,19,0.08);">
     <div style="max-width: 1200px; margin: 0 auto;">
       <div class="section-header" data-reveal style="margin-bottom: 4rem;">
         <div>
-          <p class="section-number">05 — Media Manager gesucht?</p>
+          <p class="section-number">06 — Media Manager gesucht?</p>
           <h2 class="section-title">Externer Media Manager<br>statt sechs Monate<br>Recruiting.</h2>
         </div>
         <div class="section-desc">
@@ -2470,7 +3222,7 @@
   <section id="beweis">
     <div class="section-header" data-reveal>
       <div>
-        <p class="section-number">06 — Beweis</p>
+        <p class="section-number">07 — Beweis</p>
         <h2 class="section-title">Verkäufe<br>statt Views.</h2>
       </div>
       <p class="section-desc">
@@ -2516,8 +3268,8 @@
 
       <!-- Card 2 -->
       <div class="project-card" data-reveal data-reveal-delay="1"
-        onclick="openLightbox('https://media.digitalmaker.at/Animalica_2022_V03_Katze.mp4','Animalica 2022')">
-        <img decoding="async" class="project-thumb" src="projects/Animalica_2022_V03_Katze_Thumbnail.webp" width="1200" height="675" alt="Animalica 2022"
+        onclick="openLightbox('https://media.digitalmaker.at/Animalica_2022_V03_Katze.mp4','Animalicum 2022')">
+        <img decoding="async" class="project-thumb" src="projects/Animalica_2022_V03_Katze_Thumbnail.webp" width="1200" height="675" alt="Animalicum 2022"
           loading="lazy">
         <div class="project-overlay">
           <div class="project-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="white">
@@ -2525,8 +3277,8 @@
             </svg></div>
         </div>
         <div class="project-info">
-          <p class="project-client">Animalica</p>
-          <p class="project-name">Animalica 2022</p>
+          <p class="project-client">Animalicum</p>
+          <p class="project-name">Animalicum 2022</p>
           <p class="project-type">Animal · Dokumentar</p>
         </div>
       </div>
@@ -2836,7 +3588,7 @@
       <!-- Header -->
       <div class="section-header" data-reveal style="margin-bottom: 4rem;">
         <div>
-          <p class="section-number" style="color: var(--red);">07 — KI & Automation</p>
+          <p class="section-number" style="color: var(--red);">08 — KI & Automation</p>
           <h2 style="color: var(--white);">Der Tool-Stack, mit dem du<br><em
               style="color: var(--red); font-style: normal;">zwei Jahre Vorsprung holst.</em></h2>
         </div>
@@ -3246,6 +3998,116 @@
   </section>
 
   <!-- ── EINSATZ ── -->
+  <!-- ── KUNDEN ── -->
+  <section id="kunden" aria-labelledby="kunden-title">
+    <div class="kunden-wrap">
+      <div data-reveal>
+        <p class="section-number">09 — Kunden</p>
+        <h2 class="section-title" id="kunden-title">Für wen ich<br>schon gearbeitet habe.</h2>
+        <p class="kunden-lead">Über 60 Marken – vom Vorarlberger Verein bis zum internationalen Sportsponsoring. Direktkunden und Agenturprojekte sind bewusst getrennt ausgewiesen.</p>
+      </div>
+      <div class="kunden-block" data-reveal data-reveal-delay="1">
+        <h3 class="kunden-h3">Direktkunden <span class="cnt">(30)</span></h3>
+        <div class="kunden-tags">
+          <span class="kunden-tag">Gantner Instruments</span>
+          <span class="kunden-tag">Hilcona</span>
+          <span class="kunden-tag">Bösch</span>
+          <span class="kunden-tag">BTV</span>
+          <span class="kunden-tag">Kästle</span>
+          <span class="kunden-tag">Aerocompact</span>
+          <span class="kunden-tag">HEAD</span>
+          <span class="kunden-tag">AT Automaterial</span>
+          <span class="kunden-tag">Fritsch am Berg</span>
+          <span class="kunden-tag">Schlosshofen</span>
+          <span class="kunden-tag">Valblu</span>
+          <span class="kunden-tag">Gesunde Zukunft</span>
+          <span class="kunden-tag">Breake Point</span>
+          <span class="kunden-tag">Glatz</span>
+          <span class="kunden-tag">Weidacher</span>
+          <span class="kunden-tag">Nuffinz</span>
+          <span class="kunden-tag">Simplon</span>
+          <span class="kunden-tag">Käserebellen</span>
+          <span class="kunden-tag">AKS</span>
+          <span class="kunden-tag">Walter Maier</span>
+          <span class="kunden-tag">Animalicum</span>
+          <span class="kunden-tag">Stattcooperative</span>
+          <span class="kunden-tag">Klimacent</span>
+          <span class="kunden-tag">SC Hohenweiler</span>
+          <span class="kunden-tag">Volksbank</span>
+          <span class="kunden-tag">Dyntex</span>
+          <span class="kunden-tag">Lions Club</span>
+          <span class="kunden-tag">WPD</span>
+          <span class="kunden-tag">Traction Hagen Management</span>
+          <span class="kunden-tag">Karate Vorarlberg</span>
+        </div>
+      </div>
+      <div class="kunden-block" data-reveal data-reveal-delay="2">
+        <h3 class="kunden-h3">Über Agenturpartner <span class="cnt">(35)</span></h3>
+        <div class="kunden-agency">
+          <p class="kunden-agency-name">WWP <span>– für 21 Marken</span></p>
+          <div class="kunden-tags">
+          <span class="kunden-tag via">Sunrise</span>
+          <span class="kunden-tag via">Porsche</span>
+          <span class="kunden-tag via">Banque Havilland</span>
+          <span class="kunden-tag via">Intersport</span>
+          <span class="kunden-tag via">bwin</span>
+          <span class="kunden-tag via">A1</span>
+          <span class="kunden-tag via">Swiss-Ski</span>
+          <span class="kunden-tag via">Hahnenkamm-Rennen Kitzbühel</span>
+          <span class="kunden-tag via">Uniqa</span>
+          <span class="kunden-tag via">Bitpanda</span>
+          <span class="kunden-tag via">Mastercard</span>
+          <span class="kunden-tag via">Boss</span>
+          <span class="kunden-tag via">GasGas</span>
+          <span class="kunden-tag via">waterdrop</span>
+          <span class="kunden-tag via">Veltins</span>
+          <span class="kunden-tag via">Kappacher</span>
+          <span class="kunden-tag via">UEFA</span>
+          <span class="kunden-tag via">EHF</span>
+          <span class="kunden-tag via">Rapid Wien</span>
+          <span class="kunden-tag via">Andermatt</span>
+          <span class="kunden-tag via">Pitboss</span>
+          </div>
+        </div>
+        <div class="kunden-agency">
+          <p class="kunden-agency-name">facts <span>– für 1 Marke</span></p>
+          <div class="kunden-tags">
+          <span class="kunden-tag via">Omicron</span>
+          </div>
+        </div>
+        <div class="kunden-agency">
+          <p class="kunden-agency-name">Zerodivision <span>– für 11 Marken</span></p>
+          <div class="kunden-tags">
+          <span class="kunden-tag via">Alpla</span>
+          <span class="kunden-tag via">Audi</span>
+          <span class="kunden-tag via">Doppelmayr</span>
+          <span class="kunden-tag via">Hilti</span>
+          <span class="kunden-tag via">Bachmann</span>
+          <span class="kunden-tag via">Haberkorn</span>
+          <span class="kunden-tag via">Henn</span>
+          <span class="kunden-tag via">Heron</span>
+          <span class="kunden-tag via">Liechtenstein Marketing</span>
+          <span class="kunden-tag via">Meusburger</span>
+          <span class="kunden-tag via">Lech/Zürs Arlberg</span>
+          </div>
+        </div>
+        <div class="kunden-agency">
+          <p class="kunden-agency-name">MMF <span>– für 1 Marke</span></p>
+          <div class="kunden-tags">
+          <span class="kunden-tag via">Mercedes</span>
+          </div>
+        </div>
+        <div class="kunden-agency">
+          <p class="kunden-agency-name">Avira <span>– für 1 Marke</span></p>
+          <div class="kunden-tags">
+          <span class="kunden-tag via">Dornier Museum</span>
+          </div>
+        </div>
+      </div>
+      <p class="kunden-note" data-reveal><strong>Direktkunden</strong> sind Auftraggeber, mit denen DCC unmittelbar zusammengearbeitet hat. Unter <strong>Über Agenturpartner</strong> stehen Marken, für die DCC im Auftrag der jeweils genannten Agentur produziert hat – die Kundenbeziehung lag dort bei der Agentur. Einzelne Projekte sind im Abschnitt <a href="#beweis" style="color:var(--red);font-weight:600;">Beweis</a> zu sehen.</p>
+    </div>
+  </section>
+
   <section id="einsatz" style="background: var(--cream); padding: 7rem 2rem;">
     <div style="max-width: 1200px; margin: 0 auto;">
       <div style="text-align: center; margin-bottom: 4rem;" data-reveal>
@@ -3307,10 +4169,106 @@
     </div>
   </section>
 
+  <!-- ── FAQ ── -->
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="faq-wrap">
+      <div data-reveal>
+        <p class="section-number">11 — Häufige Fragen</p>
+        <h2 class="section-title" id="faq-title">Was Kunden<br>am häufigsten fragen.</h2>
+      </div>
+      <div class="faq-list" data-reveal data-reveal-delay="1">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Was kostet ein Imagefilm bei DCC?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Ein Imagefilm startet bei 3.400 € netto in Österreich und 4.080 € netto in der Schweiz. Darin enthalten sind ein Drehtag outdoor und zwei Tage Postproduktion. Mehr Drehtage, zusätzliche Schnittfassungen oder erweiterte Nutzungsrechte erhöhen den Preis – ein verbindliches Angebot bekommst du nach dem kostenlosen Erstgespräch.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Was kostet ein Social-Media-Paket mit Reels?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Das Social-Media-Paket mit drei Reels startet bei 1.200 € netto in Österreich und 1.440 € netto in der Schweiz. Basis sind ein Halbtag Dreh und ein Halbtag Schnitt. Die Reels werden vertikal, untertitelt und plattformgerecht für Instagram, TikTok und LinkedIn geliefert.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Wie hoch ist der Tagessatz?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Der Tagessatz liegt zwischen 1.000 € und 1.400 € netto in Österreich, in der Schweiz zwischen 1.200 € und 1.680 € netto. Die Spanne richtet sich nach der Leistung: Postproduktion liegt am unteren Ende, ein Outdoor-Drehtag am oberen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Was kostet ein externer Media Manager pro Monat?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Das Monatspaket startet bei 4.500 € netto in Österreich und 5.400 € netto in der Schweiz. Enthalten sind fünf Arbeitstage pro Monat bei einer Mindestlaufzeit von sechs Monaten. Zum Vergleich: Eine Festanstellung kostet zusätzlich Lohnnebenkosten, Equipment und Software-Lizenzen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Gibt es günstigere Konditionen für Vereine und kleine Betriebe?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Ja. Über DCC Local starten Projekte für Vereine, Clubs, Non-Profit-Organisationen und lokale Kleinbetriebe in Vorarlberg bei 490 € netto. Das Angebot gilt ausschließlich in Österreich.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Wie werden Kunden aus der Schweiz und Deutschland abgerechnet?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Alle Preise verstehen sich netto, exklusive Umsatzsteuer. Für Kunden in der Schweiz gilt der Übergang der Steuerschuld (Bezugsteuer), die Schweizer Preise liegen 20 Prozent über den österreichischen. Preise für Deutschland kläre ich auf Anfrage im Erstgespräch.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Was unterscheidet DCC von einer klassischen Filmproduktionsfirma?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Filmproduktionen liefern ein einmaliges, aufwendiges Endprodukt. DCC baut ein System, das kontinuierlich plattformgerechten Content produziert – schneller, skalierbarer und direkt auf Engagement und Performance ausgerichtet.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Für wen ist das Angebot geeignet?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Für Unternehmen, die nicht mehr sporadisch Content produzieren wollen, sondern eine langfristige, konsistente Markenkommunikation aufbauen möchten – egal ob intern oder in Zusammenarbeit mit uns.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Welche Plattformen werden abgedeckt?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">LinkedIn, YouTube, Instagram Reels, TikTok, Facebook, Website und Ads – jede Plattform hat eigene Anforderungen an Länge, Format und Stil, die wir berücksichtigen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Wie startet man die Zusammenarbeit?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Mit einem kostenlosen Erstgespräch von 30 Minuten, in dem wir den aktuellen Content-Status analysieren. Danach wählen wir gemeinsam das passende Paket und starten mit einem klaren Plan.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Wie schnell sieht man Ergebnisse?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Erste Ergebnisse – mehr Konsistenz, bessere Reichweite, weniger Produktionschaos – sind oft schon nach 4–6 Wochen spürbar. Nachhaltige Markenwirkung entsteht über 3–6 Monate.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Kann DCC einen internen Media Manager ersetzen?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Ja. Als externer Media Manager übernehme ich die typischen Aufgaben einer solchen Stelle – Corporate Design, Website-Content und Landingpages, Social Media Content, Kampagnen-Creatives sowie Video und Motion Design – als Monatspaket oder projektweise. Start innerhalb von Tagen statt Monaten Recruiting, mit eigenem Equipment und eigenen Tool-Lizenzen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Bist du auch außerhalb von Bregenz verfügbar?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Ja – ich arbeite in ganz Vorarlberg und bin auch für Projekte in der Bodenseeregion sowie im gesamten DACH-Raum verfügbar. Post-Produktion und Motion Design laufen vollständig remote.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Mit welchen Marken hat DCC bereits gearbeitet?</span><span class="arrow">+</span>
+          </button>
+          <div class="faq-a">DCC hat für über 60 Marken produziert. Zu den Direktkunden zählen unter anderem Gantner Instruments, Hilcona, BTV, Volksbank, Kästle, HEAD, Simplon, Aerocompact, Dyntex, Käserebellen, Animalicum und Klimacent. Über Agenturpartner sind Projekte für Marken wie Porsche, Audi, Mercedes, Mastercard, UEFA, Swiss-Ski, Alpla, Doppelmayr, Hilti, Veltins und das Hahnenkamm-Rennen Kitzbühel entstanden – dort lag die Kundenbeziehung bei der jeweiligen Agentur. Die vollständige Liste steht im Abschnitt Kunden.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── KONTAKT ── -->
   <section id="kontakt">
     <div data-reveal>
-      <p class="section-number">11 — Kontakt</p>
+      <p class="section-number">12 — Kontakt</p>
       <h2 class="section-title">Erstgespräch<br>buchen.</h2>
       <p style="color:rgba(250,249,245,0.6);font-size:1rem;line-height:1.8;max-width:420px;margin-top:1rem;margin-bottom:1.5rem;">30 Minuten, klare Fragen, ehrliche Antworten. Kein Verkaufsdruck — entweder es passt,
       oder es passt nicht.</p>
@@ -3530,6 +4488,15 @@
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ── FAQ ACCORDION ──
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        btn.nextElementSibling.classList.toggle('open', !expanded);
+      });
     });
   </script>
 </body>
