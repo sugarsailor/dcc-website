@@ -52,6 +52,20 @@ Deliverables und Nutzungsrechten ab.
 - [Drohne / DCC Air](https://digitalmaker.at/videoproduktion.html): Professionelle Luftaufnahmen für Imagefilm, Immobilien, Event und Industrie – inklusive Genehmigungen und Versicherung. Preis: ab 700 € netto (AT).
 - [DCC Local](https://digitalmaker.at/videoproduktion-vorarlberg.html): Reduzierter Einstiegstarif für Vereine, Clubs, Non-Profit-Organisationen und lokale Kleinbetriebe in Vorarlberg. Preis: ab 490 € netto (AT).
 
+## Tool-Stack (Gen AI)
+
+DCC arbeitet mit einem durchgehenden, nodebasierten AI-Workflow statt mit Einzeltools.
+Eingesetzt werden unter anderem:
+
+- **Claude** und **OpenAI GPT** – Konzeption, Scripting, Textproduktion, Workflow-Logik
+- **Weavy.ai** – nodebasierte Orchestrierung der Workflows
+- **Freepik AI** und **Higgsfield** – Bild- und Videogenerierung
+- **Magnific** und **enhancor.ai** – Upscaling und Detailverbesserung
+- **ElevenLabs** – Voice-Generierung, mehrsprachig
+- **HeyGen** – AI-Avatare und automatisierte Videoproduktion
+
+Alle Lizenzen liegen bei DCC; Kunden müssen nichts anschaffen.
+
 ## Referenzen
 
 DCC hat für über 60 Marken produziert. Direktkunden und Agenturprojekte sind getrennt
