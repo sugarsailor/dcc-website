@@ -266,6 +266,17 @@
     .preis-table td.preis-ch { font-weight: 600; color: rgba(20,20,19,0.62); white-space: nowrap; }
     .preis-table td.basis { color: rgba(20,20,19,0.55); font-size: 0.82rem; line-height: 1.6; }
     .preis-note { margin-top: 1.25rem; font-size: 0.8rem; color: rgba(20,20,19,0.5); line-height: 1.8; }
+
+    .btn-book {
+      background: transparent; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 0.85rem 2.5rem; border-radius: 2rem;
+      font-size: 0.9rem; font-weight: 700; text-decoration: none;
+      display: inline-block; margin-left: 0.75rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-book:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+    @media (max-width: 560px) { .btn-book { margin-left: 0; margin-top: 0.75rem; } }
   </style>
 </head>
 <body>
@@ -415,6 +426,7 @@
         <h2>Bereit für Motion, der bewegt?</h2>
         <p>Lass uns dein Projekt besprechen – kostenloses Erstgespräch, kein Commitment.</p>
         <a href="index.html#kontakt" class="btn-red">Jetzt anfragen →</a>
+        <a href="https://cal.com/philipp-oberforcher-u8bwf5/30min" target="_blank" rel="noopener" class="btn-book">Erstgespräch buchen →</a>
       </div>
     </div>
   </main>
