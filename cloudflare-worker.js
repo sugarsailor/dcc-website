@@ -28,10 +28,12 @@ export default {
         ...(request.headers.get('Range') && { Range: request.headers.get('Range') }),
       },
       cf: {
-        // Cache everything at Cloudflare edge for 1 year
-        cacheTtl: 31536000,
+        // Cache successful responses at Cloudflare edge for 1 year — never errors,
+        // otherwise a file requested before its upload stays a 404 for a year
         cacheEverything: true,
-        cacheKey: url.pathname,
+        cacheTtlByStatus: { '200-299': 31536000, '300-599': -1 },
+        // Full URL (minus query string) so "Purge by URL" in the dashboard matches
+        cacheKey: `${url.origin}${url.pathname}`,
       },
     });
 
@@ -39,7 +41,9 @@ export default {
     const responseHeaders = new Headers(b2Response.headers);
     responseHeaders.set('Access-Control-Allow-Origin', '*');
     responseHeaders.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
-    responseHeaders.set('Cache-Control', 'public, max-age=31536000, immutable');
+    responseHeaders.set('Cache-Control', b2Response.ok
+      ? 'public, max-age=31536000, immutable'
+      : 'no-store');
 
     return new Response(b2Response.body, {
       status: b2Response.status,

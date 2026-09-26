@@ -3076,16 +3076,45 @@
         startTimeout = setTimeout(finish, 5000);
         const p = video.play();
         if (p) p.catch(e => {
+          // Browsers block autoplay with sound for most first visits:
+          // play muted instead and turn the sound on at the first interaction
+          if (e.name === 'NotAllowedError' && !video.muted) {
+            setMuted(true);
+            unmuteOnFirstInteraction();
+            start();
+          }
           // AbortError = interrupted (e.g. tab hidden mid-start), not blocked
-          if (e.name === 'AbortError' && retries++ < 3) start();
+          else if (e.name === 'AbortError' && retries++ < 3) start();
           else finish();
         });
+      }
+
+      function setMuted(muted) {
+        video.muted = muted;
+        soundBtn.setAttribute('aria-checked', String(!muted));
+      }
+
+      const activationEvents = ['click', 'keydown', 'touchend'];
+      function onFirstInteraction(e) {
+        // The reel's own buttons handle themselves
+        if (e.target.closest && e.target.closest('.hero-reel-controls')) return;
+        // Unmuting without a real user activation would make Chrome pause the video
+        if (navigator.userActivation && !navigator.userActivation.isActive) return;
+        stopWaitingForInteraction();
+        if (!done) setMuted(false);
+      }
+      function unmuteOnFirstInteraction() {
+        activationEvents.forEach(t => document.addEventListener(t, onFirstInteraction, true));
+      }
+      function stopWaitingForInteraction() {
+        activationEvents.forEach(t => document.removeEventListener(t, onFirstInteraction, true));
       }
 
       function finish() {
         if (done) return;
         done = true;
         clearTimeout(startTimeout);
+        stopWaitingForInteraction();
         hero.classList.remove('reel-playing');
         hero.classList.add('reel-done');
         // Fade the audio out together with the picture
@@ -3105,8 +3134,8 @@
       }
 
       soundBtn.addEventListener('click', () => {
-        video.muted = !video.muted;
-        soundBtn.setAttribute('aria-checked', String(!video.muted));
+        stopWaitingForInteraction();
+        setMuted(!video.muted);
       });
       skipBtn.addEventListener('click', finish);
       video.addEventListener('playing', () => clearTimeout(startTimeout), { once: true });
@@ -3115,6 +3144,7 @@
 
       hero.classList.add('reel-playing');
       reel.hidden = false;
+      setMuted(false);
       video.src = window.matchMedia('(max-width: 900px)').matches
         ? 'https://media.digitalmaker.at/dcc-reel-2026-720.mp4'
         : 'https://media.digitalmaker.at/dcc-reel-2026-1080.mp4';
