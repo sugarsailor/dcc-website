@@ -1424,6 +1424,137 @@
       }
     }
 
+    /* ── HERO REEL — plays once on load, then fades into the hero ── */
+    #hero>.hero-reel {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      background: var(--black);
+      transition: opacity 1.4s ease, visibility 0s linear 1.4s;
+    }
+
+    /* contain, not cover: the reel's corner labels and end card must never be cropped.
+       Its background (#141414) matches --black, so the letterbox bars are invisible. */
+    .hero-reel video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .hero-reel-controls {
+      position: absolute;
+      right: 2rem;
+      bottom: 2rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .hero-reel-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      background: rgba(20, 20, 19, 0.55);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .hero-reel-btn:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(20, 20, 19, 0.8);
+    }
+
+    .hero-reel-btn:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 2px;
+    }
+
+    .reel-switch {
+      position: relative;
+      width: 28px;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.25);
+      transition: background 0.25s;
+    }
+
+    .reel-switch::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--white);
+      transition: transform 0.25s;
+    }
+
+    .hero-reel-btn[aria-checked="true"] .reel-switch {
+      background: var(--red);
+    }
+
+    .hero-reel-btn[aria-checked="true"] .reel-switch::after {
+      transform: translateX(12px);
+    }
+
+    .hero-reel-btn .icon-sound-on,
+    .hero-reel-btn[aria-checked="true"] .icon-sound-off {
+      display: none;
+    }
+
+    .hero-reel-btn[aria-checked="true"] .icon-sound-on {
+      display: block;
+    }
+
+    #hero.reel-playing .hero-content>*,
+    #hero.reel-playing .hero-bg-text,
+    #hero.reel-playing .hero-scroll {
+      opacity: 0;
+    }
+
+    #hero.reel-playing .hero-content>* {
+      transform: translateY(24px);
+    }
+
+    #hero.reel-done .hero-content>* {
+      transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    #hero.reel-done .hero-content>*:nth-child(1) { transition-delay: 0.5s; }
+    #hero.reel-done .hero-content>*:nth-child(2) { transition-delay: 0.65s; }
+    #hero.reel-done .hero-content>*:nth-child(3) { transition-delay: 0.8s; }
+    #hero.reel-done .hero-content>*:nth-child(4) { transition-delay: 0.95s; }
+
+    #hero.reel-done .hero-bg-text,
+    #hero.reel-done .hero-scroll {
+      transition: opacity 1.4s ease 1s;
+    }
+
+    #hero.reel-done>.hero-reel {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-reel-controls {
+        right: 1.25rem;
+        bottom: 1.25rem;
+      }
+    }
+
     .hero-bg-text {
       position: absolute;
       bottom: -0.1em;
@@ -2908,7 +3039,88 @@
       <!-- TODO: Logo-Strip — Logos von Mercedes, Veltins, Kästle, Gantner, WWP einholen und hier einfügen -->
     </div>
     <div class="hero-scroll">scroll</div>
+    <div class="hero-reel" id="heroReel" hidden>
+      <video id="heroReelVideo" muted playsinline preload="none" aria-label="DCC showreel 2026"></video>
+      <div class="hero-reel-controls">
+        <button type="button" class="hero-reel-btn" id="heroReelSound" role="switch" aria-checked="false">
+          <svg class="icon-sound-off" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m23 9-6 6M17 9l6 6"/></svg>
+          <svg class="icon-sound-on" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+          Sound
+          <span class="reel-switch" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="hero-reel-btn" id="heroReelSkip">Skip →</button>
+      </div>
+    </div>
   </section>
+  <script>
+    // ── HERO REEL ── plays once on load, then fades into the hero.
+    // Runs right after the hero markup so the hero text never flashes before the reel.
+    (function () {
+      const hero = document.getElementById('hero');
+      const reel = document.getElementById('heroReel');
+      const video = document.getElementById('heroReelVideo');
+      const soundBtn = document.getElementById('heroReelSound');
+      const skipBtn = document.getElementById('heroReelSkip');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      let done = false, startTimeout, retries = 0;
+
+      function start() {
+        // Opened in a background tab: wait until someone actually looks
+        if (document.hidden) {
+          document.addEventListener('visibilitychange', start, { once: true });
+          return;
+        }
+        // Slow connection or blocked autoplay: don't hold the hero hostage
+        clearTimeout(startTimeout);
+        startTimeout = setTimeout(finish, 5000);
+        const p = video.play();
+        if (p) p.catch(e => {
+          // AbortError = interrupted (e.g. tab hidden mid-start), not blocked
+          if (e.name === 'AbortError' && retries++ < 3) start();
+          else finish();
+        });
+      }
+
+      function finish() {
+        if (done) return;
+        done = true;
+        clearTimeout(startTimeout);
+        hero.classList.remove('reel-playing');
+        hero.classList.add('reel-done');
+        // Fade the audio out together with the picture
+        const startVol = video.volume;
+        const t0 = performance.now();
+        (function fade(now) {
+          const k = Math.min((now - t0) / 1400, 1);
+          video.volume = startVol * (1 - k);
+          if (k < 1) requestAnimationFrame(fade);
+          else {
+            video.pause();
+            video.removeAttribute('src');
+            video.load();
+            reel.hidden = true;
+          }
+        })(t0);
+      }
+
+      soundBtn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        soundBtn.setAttribute('aria-checked', String(!video.muted));
+      });
+      skipBtn.addEventListener('click', finish);
+      video.addEventListener('playing', () => clearTimeout(startTimeout), { once: true });
+      video.addEventListener('ended', finish);
+      video.addEventListener('error', finish);
+
+      hero.classList.add('reel-playing');
+      reel.hidden = false;
+      video.src = window.matchMedia('(max-width: 900px)').matches
+        ? 'https://media.digitalmaker.at/dcc-reel-2026-720.mp4'
+        : 'https://media.digitalmaker.at/dcc-reel-2026-1080.mp4';
+      start();
+    })();
+  </script>
 
   <!-- ── PROBLEM ── -->
   <section id="problem" style="background: var(--cream); padding: 7rem 2rem;">
