@@ -1434,7 +1434,8 @@
     }
 
     /* contain, not cover: the reel's corner labels and end card must never be cropped.
-       Its background (#141414) matches --black, so the letterbox bars are invisible. */
+       16:9 cut on landscape, 9:16 cut on portrait; the background matches --black,
+       so the remaining letterbox bars are invisible. */
     .hero-reel video {
       display: block;
       width: 100%;
@@ -3145,9 +3146,10 @@
       hero.classList.add('reel-playing');
       reel.hidden = false;
       setMuted(false);
-      video.src = window.matchMedia('(max-width: 900px)').matches
-        ? 'https://media.digitalmaker.at/dcc-reel-2026-720.mp4'
-        : 'https://media.digitalmaker.at/dcc-reel-2026-1080.mp4';
+      // Portrait screens (phones) get the vertical cut
+      video.src = window.matchMedia('(orientation: portrait)').matches
+        ? 'https://media.digitalmaker.at/dcc-reel-2026_9x16.mp4'
+        : 'https://media.digitalmaker.at/dcc-reel-2026_16x9.mp4';
       start();
     })();
   </script>
