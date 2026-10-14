@@ -66,6 +66,21 @@ Eingesetzt werden unter anderem:
 
 Alle Lizenzen liegen bei DCC; Kunden müssen nichts anschaffen.
 
+## KI für Design & 3D
+
+DCC versteht bestehende 2D- und 3D-Workflows, findet die Stellen, an denen generative KI echten
+Mehrwert bringt, und baut die passenden Werkzeuge – als Brücke zwischen Kreation und Engineering.
+Prinzip: KI erweitert menschliche Kreativität, sie ersetzt sie nicht.
+
+- **Workflows verstehen** – Analyse bestehender 2D- und 3D-Prozesse, Identifikation der größten KI-Hebel
+- **Node-basierte Prototypen** – saubere, moderne Gen-AI-Workflows in visuellen Node-Umgebungen, schnell iteriert
+- **Brücke zu Engineering** – Übersetzung zwischen Kreation und Technik, damit Prototypen schneller einsatzfähig werden
+- **Workshops** – praxisnahe Workshops zum sinnvollen und sicheren KI-Einsatz im Kreativalltag
+- **Neue Modelle evaluieren** – Tests neuer Modelle und Techniken, Integration des Bewährten, Kultur des Experimentierens
+- **Support in Schlüsselmomenten** – Hands-on-Unterstützung bei Kampagnen-Launches, Pitches und Präsentationen
+
+Details: https://digitalmaker.at/#ki-design
+
 ## Referenzen
 
 DCC hat für über 60 Marken produziert. Direktkunden und Agenturprojekte sind getrennt

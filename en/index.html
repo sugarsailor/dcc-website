@@ -2546,6 +2546,21 @@
     }
 
     /* ── TABLET (≤1024px) ── */
+    /* Desktop-Nav: enger setzen, damit alle Punkte bis zum Burger-Breakpoint passen */
+    @media (min-width: 769px) and (max-width: 1280px) {
+      .nav-links { gap: 1.5rem; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .nav-links { gap: 0.9rem; font-size: 0.7rem; letter-spacing: 0.05em; }
+      .nav-cta { padding-left: 1rem; padding-right: 1rem; }
+    }
+
+    @media (min-width: 769px) and (max-width: 900px) {
+      .nav-logo span { display: none; }
+      .nav-links { gap: 0.7rem; margin-left: 0.75rem; }
+    }
+
     @media (max-width: 1024px) {
       nav {
         padding: 1rem 2rem;
@@ -2847,6 +2862,11 @@
         grid-template-columns: 1fr !important;
       }
 
+      /* KI für Design & 3D */
+      #ki-design {
+        padding: 4rem 1.25rem !important;
+      }
+
       /* Plan section */
       #plan {
         padding: 4rem 1.25rem !important;
@@ -2996,6 +3016,7 @@
       <li><a href="#leistungen">Services</a></li>
       <li><a href="#preise">Pricing</a></li>
       <li><a href="#ai-content">Gen AI</a></li>
+      <li><a href="#ki-design">AI Design</a></li>
       <li><a href="#beweis">Projects</a></li>
       <li><a href="#dcc-air">DCC Air</a></li>
       <li><a href="#ueber-mich">About me</a></li>
@@ -4173,6 +4194,61 @@
     </div>
   </section>
 
+  <!-- ── KI FÜR DESIGN & 3D ── -->
+  <section id="ki-design" style="background: var(--cream); padding: 7rem 2rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-header" data-reveal style="margin-bottom: 4rem;">
+        <div>
+          <p class="section-number">09 — AI for Design &amp; 3D</p>
+          <h2 class="section-title">AI that makes<br>creativity stronger,<br>not redundant.</h2>
+        </div>
+        <div class="section-desc">
+          <p>I learn your 2D and 3D workflows, find where generative AI adds real value, and build the tools to match. I act as the bridge between creative and engineering.</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 4rem;" class="problem-grid">
+        <div data-reveal data-reveal-delay="0" style="border: 1px solid rgba(20,20,19,0.1); border-radius: 1rem; padding: 2.5rem; background: var(--white);">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: var(--red); margin-bottom: 1.25rem;">01</div>
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Understand the workflow</h3>
+          <p style="font-size: 0.92rem; color: var(--gray); line-height: 1.75;">I map existing 2D and 3D processes and find the high-value opportunities for AI.</p>
+        </div>
+        <div data-reveal data-reveal-delay="1" style="border: 1px solid rgba(20,20,19,0.1); border-radius: 1rem; padding: 2.5rem; background: var(--white);">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: var(--red); margin-bottom: 1.25rem;">02</div>
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Node-based prototypes</h3>
+          <p style="font-size: 0.92rem; color: var(--gray); line-height: 1.75;">Clean, modern gen-AI workflows in visual node-based environments, built for your design challenges and iterated quickly.</p>
+        </div>
+        <div data-reveal data-reveal-delay="2" style="border: 1px solid rgba(20,20,19,0.1); border-radius: 1rem; padding: 2.5rem; background: var(--white);">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: var(--red); margin-bottom: 1.25rem;">03</div>
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Bridge to engineering</h3>
+          <p style="font-size: 0.92rem; color: var(--gray); line-height: 1.75;">I translate between creative and engineering so prototypes become deployed solutions faster.</p>
+        </div>
+        <div data-reveal data-reveal-delay="0" style="border: 1px solid rgba(20,20,19,0.1); border-radius: 1rem; padding: 2.5rem; background: var(--white);">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: var(--red); margin-bottom: 1.25rem;">04</div>
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Workshops</h3>
+          <p style="font-size: 0.92rem; color: var(--gray); line-height: 1.75;">Hands-on workshops that show how to use AI in creative work, effectively and safely.</p>
+        </div>
+        <div data-reveal data-reveal-delay="1" style="border: 1px solid rgba(20,20,19,0.1); border-radius: 1rem; padding: 2.5rem; background: var(--white);">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: var(--red); margin-bottom: 1.25rem;">05</div>
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Evaluate new models</h3>
+          <p style="font-size: 0.92rem; color: var(--gray); line-height: 1.75;">I test new models and techniques, integrate what works, and encourage a culture of experimentation.</p>
+        </div>
+        <div data-reveal data-reveal-delay="2" style="border: 1px solid rgba(20,20,19,0.1); border-radius: 1rem; padding: 2.5rem; background: var(--white);">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: var(--red); margin-bottom: 1.25rem;">06</div>
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Support at key moments</h3>
+          <p style="font-size: 0.92rem; color: var(--gray); line-height: 1.75;">Hands-on support when it counts: campaign launches, pitches and presentations.</p>
+        </div>
+      </div>
+
+      <div data-reveal style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem;">
+        <div style="max-width: 680px; border-left: 3px solid var(--red); padding-left: 2rem;">
+          <p style="font-size: 1.05rem; line-height: 1.85; color: rgba(20,20,19,0.75);"><strong>My principle:</strong> AI augments human creativity. It doesn't replace it.</p>
+        </div>
+        <a href="#kontakt" class="btn-primary">Let's talk about your workflow →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- TODO: 2–3 Kundenstimmen einholen. Bevorzugte Quellen: Gantner, WWP, Veltins. -->
   <!-- Pro Stimme: 1–2 Sätze Zitat, Name, Position, Markenlogo. -->
   <!-- Solange Stimmen fehlen, diese Sektion auskommentiert lassen. -->
@@ -4181,7 +4257,7 @@
   <section id="dcc-air" style="background: var(--black); padding: 7rem 4rem;">
     <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
       <div data-reveal>
-        <p style="color: var(--red); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;">08 — DCC Air</p>
+        <p style="color: var(--red); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;">10 — DCC Air</p>
         <h2 style="color: var(--white); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.05; margin-bottom: 1.5rem;">Drone services.<br>Professional.</h2>
         <p style="color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem;">You need aerial footage that doesn't look like every other drone production.
         4K footage, precise 2D mapping and photorealistic 3D reconstruction — for
@@ -4225,7 +4301,7 @@
       </div>
     </div>
     <div class="about-content" data-reveal data-reveal-delay="2">
-      <p class="about-intro">09 — About me</p>
+      <p class="about-intro">11 — About me</p>
       <h2 class="about-title">Philipp<br>Oberforcher.</h2>
       <p class="about-text">
         I'm the partner for brands that don't want to wait until "the industry is ready".
@@ -4258,7 +4334,7 @@
   <section id="kunden" aria-labelledby="kunden-title">
     <div class="kunden-wrap">
       <div data-reveal>
-        <p class="section-number">09 — Clients</p>
+        <p class="section-number">12 — Clients</p>
         <h2 class="section-title" id="kunden-title">Who I have<br>already worked for.</h2>
         <p class="kunden-lead">More than 60 brands – from local Vorarlberg associations to international sports sponsoring. Direct clients and agency projects are listed separately on purpose.</p>
       </div>
@@ -4367,7 +4443,7 @@
   <section id="einsatz" style="background: var(--cream); padding: 7rem 2rem;">
     <div style="max-width: 1200px; margin: 0 auto;">
       <div style="text-align: center; margin-bottom: 4rem;" data-reveal>
-        <p class="section-number">10 — What's at stake</p>
+        <p class="section-number">13 — What's at stake</p>
         <h2 class="section-title">With DCC or without —<br>the difference<br>in 24 months.</h2>
       </div>
 
@@ -4429,7 +4505,7 @@
   <section id="faq" aria-labelledby="faq-title">
     <div class="faq-wrap">
       <div data-reveal>
-        <p class="section-number">11 — Frequently asked</p>
+        <p class="section-number">14 — Frequently asked</p>
         <h2 class="section-title" id="faq-title">What clients<br>ask most often.</h2>
       </div>
       <div class="faq-list" data-reveal data-reveal-delay="1">
@@ -4524,7 +4600,7 @@
   <!-- ── KONTAKT ── -->
   <section id="kontakt">
     <div data-reveal>
-      <p class="section-number">12 — Contact</p>
+      <p class="section-number">15 — Contact</p>
       <h2 class="section-title">Book a<br>discovery call.</h2>
       <p style="color:rgba(250,249,245,0.6);font-size:1rem;line-height:1.8;max-width:420px;margin-top:1rem;margin-bottom:1.5rem;">30 minutes, clear questions, honest answers. No sales pressure — either it's a fit,
       or it isn't.</p>
