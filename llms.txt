@@ -120,9 +120,9 @@ die Produktionsleistung bei DCC.
 - Traction Hagen Management
 - Karate Vorarlberg
 
-### Über Agenturpartner (36)
+### Über Agenturpartner (39)
 
-**WWP** – Sunrise, Porsche, Banque Havilland, Intersport, bwin, A1, Swiss-Ski, Hahnenkamm-Rennen Kitzbühel, Uniqa, Bitpanda, Mastercard, Boss, GasGas, waterdrop, Veltins, Kappacher, UEFA, EHF, Rapid Wien, Andermatt, Pitboss
+**WWP** – Sunrise, Porsche, Banque Havilland, Intersport, bwin, A1, Swiss-Ski, Hahnenkamm-Rennen Kitzbühel, Uniqa, Bitpanda, Mastercard, Boss, GasGas, waterdrop, Veltins, UEFA, EHF, Rapid Wien, Andermatt, Pitboss, UBS, Kaufland, Lidl, Schwarz Digits
 
 **facts** – Omicron, DanKüchen
 
