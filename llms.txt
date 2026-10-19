@@ -87,7 +87,7 @@ DCC hat für über 60 Marken produziert. Direktkunden und Agenturprojekte sind g
 ausgewiesen: Bei Agenturprojekten lag die Kundenbeziehung bei der jeweils genannten Agentur,
 die Produktionsleistung bei DCC.
 
-### Direktkunden (30)
+### Direktkunden (31)
 
 - Gantner Instruments
 - Hilcona
@@ -119,8 +119,9 @@ die Produktionsleistung bei DCC.
 - WPD
 - Traction Hagen Management
 - Karate Vorarlberg
+- Dornier Museum
 
-### Über Agenturpartner (39)
+### Über Agenturpartner (38)
 
 **WWP** – Sunrise, Porsche, Banque Havilland, Intersport, bwin, A1, Swiss-Ski, Hahnenkamm-Rennen Kitzbühel, Uniqa, Bitpanda, Mastercard, Boss, GasGas, waterdrop, Veltins, UEFA, EHF, Rapid Wien, Andermatt, Pitboss, UBS, Kaufland, Lidl, Schwarz Digits
 
@@ -129,8 +130,6 @@ die Produktionsleistung bei DCC.
 **Zerodivision** – Alpla, Audi, Doppelmayr, Hilti, Bachmann, Haberkorn, Henn, Heron, Liechtenstein Marketing, Meusburger, Lech/Zürs Arlberg
 
 **MMF** – Mercedes
-
-**Avira** – Dornier Museum
 
 ## Seiten
 

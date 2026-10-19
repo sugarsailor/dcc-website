@@ -2958,6 +2958,18 @@
     .kunden-agency-name { font-size: 0.82rem; font-weight: 700; color: var(--black); margin-bottom: 0.75rem; }
     .kunden-agency-name span { font-weight: 400; color: rgba(20,20,19,0.45); }
     .kunden-tag.via { background: var(--white); color: rgba(20,20,19,0.68); font-weight: 500; }
+    .kunden-logos { list-style: none; margin: 3rem 0 0; padding: 0; display: grid;
+      grid-template-columns: repeat(5, 1fr); gap: 0.75rem; }
+    @media (max-width: 900px) { .kunden-logos { grid-template-columns: repeat(4, 1fr); } }
+    .kunden-logos li { height: 84px; display: flex; align-items: center; justify-content: center;
+      border: 1px solid #e8e6e0; border-radius: 0.75rem; padding: 0.9rem; background: var(--white); }
+    .kunden-logos img { max-width: 100%; max-height: 34px; width: auto; height: auto;
+      filter: grayscale(1); opacity: 0.62; transition: filter 0.3s, opacity 0.3s; }
+    .kunden-logos img.sq { max-height: 52px; }
+    .kunden-logos li:hover img { filter: none; opacity: 1; }
+    .kunden-logos-note { margin-top: 0.9rem; font-size: 0.75rem; color: rgba(20,20,19,0.45); }
+    @media (max-width: 768px) { .kunden-logos { gap: 0.5rem; }
+      .kunden-logos li { height: 60px; padding: 0.5rem; border-radius: 0.5rem; } .kunden-logos img { max-height: 22px; } .kunden-logos img.sq { max-height: 36px; } }
     .kunden-note { margin-top: 2.5rem; font-size: 0.8rem; color: rgba(20,20,19,0.5); line-height: 1.8; }
     @media (max-width: 768px) { #kunden { padding: 4.5rem 1.25rem; } }
 
@@ -4338,8 +4350,33 @@
         <h2 class="section-title" id="kunden-title">Für wen ich<br>schon gearbeitet habe.</h2>
         <p class="kunden-lead">Über 60 Marken – vom Vorarlberger Verein bis zum internationalen Sportsponsoring. Direktkunden und Agenturprojekte sind bewusst getrennt ausgewiesen.</p>
       </div>
+      <div data-reveal data-reveal-delay="1">
+      <ul class="kunden-logos" aria-label="Auswahl von Marken">
+        <li><img src="/logos/gantner.svg" alt="Gantner Instruments" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/hilcona.svg" alt="Hilcona" class="sq" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/btv.svg" alt="BTV" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/volksbank.svg" alt="Volksbank" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/head.svg" alt="HEAD" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/kaestle.svg" alt="Kästle" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/simplon.svg" alt="Simplon" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/dornier-museum.svg" alt="Dornier Museum" class="sq" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/porsche.svg" alt="Porsche" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/intersport.svg" alt="Intersport" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/audi.svg" alt="Audi" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/mercedes.svg" alt="Mercedes-Benz" class="sq" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/mastercard.svg" alt="Mastercard" class="sq" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/uefa.svg" alt="UEFA" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/hilti.svg" alt="Hilti" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/doppelmayr.svg" alt="Doppelmayr" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/lidl.svg" alt="Lidl" class="sq" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/kaufland.svg" alt="Kaufland" class="sq" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/a1.svg" alt="A1" class="sq" loading="lazy" decoding="async"></li>
+        <li><img src="/logos/swiss-ski.svg" alt="Swiss-Ski" loading="lazy" decoding="async"></li>
+      </ul>
+      <p class="kunden-logos-note">Auswahl aus Direkt- und Agenturprojekten. Die vollständige Liste mit Zuordnung steht darunter.</p>
+      </div>
       <div class="kunden-block" data-reveal data-reveal-delay="1">
-        <h3 class="kunden-h3">Direktkunden <span class="cnt">(30)</span></h3>
+        <h3 class="kunden-h3">Direktkunden <span class="cnt">(31)</span></h3>
         <div class="kunden-tags">
           <span class="kunden-tag">Gantner Instruments</span>
           <span class="kunden-tag">Hilcona</span>
@@ -4371,10 +4408,11 @@
           <span class="kunden-tag">WPD</span>
           <span class="kunden-tag">Traction Hagen Management</span>
           <span class="kunden-tag">Karate Vorarlberg</span>
+          <span class="kunden-tag">Dornier Museum</span>
         </div>
       </div>
       <div class="kunden-block" data-reveal data-reveal-delay="2">
-        <h3 class="kunden-h3">Über Agenturpartner <span class="cnt">(39)</span></h3>
+        <h3 class="kunden-h3">Über Agenturpartner <span class="cnt">(38)</span></h3>
         <div class="kunden-agency">
           <p class="kunden-agency-name">WWP <span>– für 24 Marken</span></p>
           <div class="kunden-tags">
@@ -4431,12 +4469,6 @@
           <p class="kunden-agency-name">MMF <span>– für 1 Marke</span></p>
           <div class="kunden-tags">
           <span class="kunden-tag via">Mercedes</span>
-          </div>
-        </div>
-        <div class="kunden-agency">
-          <p class="kunden-agency-name">Avira <span>– für 1 Marke</span></p>
-          <div class="kunden-tags">
-          <span class="kunden-tag via">Dornier Museum</span>
           </div>
         </div>
       </div>
